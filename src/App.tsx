@@ -22,6 +22,15 @@ import InputPage from "./pages/docs/components/InputPage";
 import DialogPage from "./pages/docs/components/DialogPage";
 import TabsPage from "./pages/docs/components/TabsPage";
 import SwitchPage from "./pages/docs/components/SwitchPage";
+import ToastPage from "./pages/docs/components/ToastPage";
+import NavBarPage from "./pages/docs/components/NavBarPage";
+import SidebarPage from "./pages/docs/components/SidebarPage";
+import DropdownPage from "./pages/docs/components/DropdownPage";
+import DataTablePage from "./pages/docs/components/DataTablePage";
+import CommandPage from "./pages/docs/components/CommandPage";
+import SegmentedPage from "./pages/docs/components/SegmentedPage";
+import FABPage from "./pages/docs/components/FABPage";
+import NotificationsPage from "./pages/docs/components/NotificationsPage";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +55,15 @@ const App = () => (
               <Route path="components/dialog" element={<DialogPage />} />
               <Route path="components/tabs" element={<TabsPage />} />
               <Route path="components/switch" element={<SwitchPage />} />
+              <Route path="components/toast" element={<ToastPage />} />
+              <Route path="components/navbar" element={<NavBarPage />} />
+              <Route path="components/sidebar" element={<SidebarPage />} />
+              <Route path="components/dropdown" element={<DropdownPage />} />
+              <Route path="components/data-table" element={<DataTablePage />} />
+              <Route path="components/command" element={<CommandPage />} />
+              <Route path="components/segmented" element={<SegmentedPage />} />
+              <Route path="components/fab" element={<FABPage />} />
+              <Route path="components/notifications" element={<NotificationsPage />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
