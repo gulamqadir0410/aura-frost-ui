@@ -45,8 +45,8 @@
     --sidebar-ring: 221 83% 53%;
 
     /* Glass tokens - light */
-    --glass-bg: 0 0% 100%;
-    --glass-border: 0 0% 100%;
+    --glass-bg: 220 20% 100%;
+    --glass-border: 220 20% 80%;
     --glass-glow: 221 83% 53%;
     --glass-shadow: 221 83% 53%;
     --glass-noise: 0.02;
@@ -95,8 +95,8 @@
     --sidebar-ring: 217 91% 60%;
 
     /* Glass tokens - dark */
-    --glass-bg: 0 0% 100%;
-    --glass-border: 0 0% 100%;
+    --glass-bg: 220 30% 20%;
+    --glass-border: 220 20% 40%;
     --glass-glow: 217 91% 60%;
     --glass-shadow: 217 91% 60%;
     --glass-noise: 0.03;
