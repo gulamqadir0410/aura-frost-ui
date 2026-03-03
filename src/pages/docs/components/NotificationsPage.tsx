@@ -47,13 +47,15 @@ export default function NotificationsPage() {
   onDismiss={(id) => dismiss(id)}
 />`}
       >
-        <div className="flex justify-end w-full">
-          <GlassNotificationCenter
-            notifications={notifications}
-            onMarkRead={(id) => setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)))}
-            onMarkAllRead={() => setNotifications((prev) => prev.map((n) => ({ ...n, read: true })))}
-            onDismiss={(id) => setNotifications((prev) => prev.filter((n) => n.id !== id))}
-          />
+        <div className="relative flex justify-end w-full min-h-[400px]">
+          <div className="relative z-10">
+            <GlassNotificationCenter
+              notifications={notifications}
+              onMarkRead={(id) => setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)))}
+              onMarkAllRead={() => setNotifications((prev) => prev.map((n) => ({ ...n, read: true })))}
+              onDismiss={(id) => setNotifications((prev) => prev.filter((n) => n.id !== id))}
+            />
+          </div>
         </div>
       </ComponentPreview>
 

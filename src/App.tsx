@@ -31,7 +31,7 @@ import CommandPage from "./pages/docs/components/CommandPage";
 import SegmentedPage from "./pages/docs/components/SegmentedPage";
 import FABPage from "./pages/docs/components/FABPage";
 import NotificationsPage from "./pages/docs/components/NotificationsPage";
-
+import ChartPage from "./pages/docs/components/ChartPage";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -64,6 +64,7 @@ const App = () => (
               <Route path="components/segmented" element={<SegmentedPage />} />
               <Route path="components/fab" element={<FABPage />} />
               <Route path="components/notifications" element={<NotificationsPage />} />
+              <Route path="components/chart" element={<ChartPage />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
