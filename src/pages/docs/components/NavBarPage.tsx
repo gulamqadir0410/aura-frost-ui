@@ -36,17 +36,11 @@ export default function NavBarPage() {
         <p className="text-lg text-muted-foreground">Responsive glass navbar with mega menu support and mobile slide panel.</p>
       </div>
 
+      {/* Default variant */}
       <ComponentPreview
         code={`<GlassNavBar
   brand={<span className="font-bold">LiquidUI</span>}
-  items={[
-    { label: "Home", href: "#" },
-    { label: "Products", children: [
-      { label: "Components", href: "#" },
-      { label: "Templates", href: "#" },
-    ]},
-    { label: "Docs", href: "#" },
-  ]}
+  items={navItems}
   actions={<GlassButton size="sm" variant="glass">Sign In</GlassButton>}
   sticky={false}
 />`}
@@ -68,10 +62,100 @@ export default function NavBarPage() {
         </div>
       </ComponentPreview>
 
+      {/* Minimal variant */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Scroll-Aware Variant</h2>
+        <h2 className="text-xl font-semibold">Minimal Variant</h2>
+        <p className="text-sm text-muted-foreground">Clean, borderless navbar with minimal styling — no background, just text links.</p>
+        <ComponentPreview code={`<GlassNavBar brand="Logo" items={navItems} transparent sticky={false} />`}>
+          <div className="w-full max-w-2xl">
+            <GlassNavBar
+              brand={<span className="font-bold text-sm tracking-widest uppercase">Logo</span>}
+              items={[{ label: "About", href: "#" }, { label: "Work", href: "#" }, { label: "Contact", href: "#" }]}
+              transparent
+              sticky={false}
+            />
+          </div>
+        </ComponentPreview>
+      </div>
+
+      {/* Centered brand */}
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold">Centered Brand Variant</h2>
+        <p className="text-sm text-muted-foreground">Brand centered between left and right navigation groups.</p>
+        <ComponentPreview code={`// Centered brand layout using custom composition`}>
+          <div className="w-full max-w-2xl glass-2 rounded-xl border border-border">
+            <div className="flex items-center justify-between h-14 px-4">
+              <div className="flex items-center gap-4">
+                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Products</a>
+                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Features</a>
+              </div>
+              <div className="font-bold text-lg">✦ LiquidUI</div>
+              <div className="flex items-center gap-4">
+                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
+                <GlassButton size="sm" variant="glass">Sign Up</GlassButton>
+              </div>
+            </div>
+          </div>
+        </ComponentPreview>
+      </div>
+
+      {/* Split navigation */}
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold">Split Navigation Variant</h2>
+        <p className="text-sm text-muted-foreground">Primary links on the left, secondary actions on the right with clear visual separation.</p>
+        <ComponentPreview code={`// Split navigation with grouped actions`}>
+          <div className="w-full max-w-2xl glass-2 rounded-xl border border-border">
+            <div className="flex items-center justify-between h-14 px-4">
+              <div className="flex items-center gap-6">
+                <span className="font-bold">LiquidUI</span>
+                <div className="h-4 w-px bg-border" />
+                <div className="flex items-center gap-1">
+                  {["Dashboard", "Projects", "Team"].map((item) => (
+                    <a key={item} href="#" className="px-3 py-1.5 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors">{item}</a>
+                  ))}
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <button className="p-2 rounded-lg text-muted-foreground hover:text-foreground transition-colors"><Search className="h-4 w-4" /></button>
+                <button className="p-2 rounded-lg text-muted-foreground hover:text-foreground transition-colors"><Bell className="h-4 w-4" /></button>
+                <div className="h-7 w-7 rounded-full bg-primary/20 flex items-center justify-center">
+                  <User className="h-3.5 w-3.5 text-primary" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </ComponentPreview>
+      </div>
+
+      {/* Transparent / overlay */}
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold">Transparent / Overlay Variant</h2>
+        <p className="text-sm text-muted-foreground">Fully transparent navbar designed to overlay hero sections, with <code className="text-primary">scrollAware</code> to solidify on scroll.</p>
+        <ComponentPreview code={`<GlassNavBar transparent scrollAware sticky={false} brand="LiquidUI" items={navItems} />`}>
+          <div className="w-full max-w-2xl relative">
+            <div className="absolute inset-0 rounded-xl gradient-bg opacity-60" />
+            <div className="relative">
+              <GlassNavBar
+                brand={<span className="font-bold text-foreground">LiquidUI</span>}
+                items={[{ label: "Features", href: "#" }, { label: "Pricing", href: "#" }, { label: "Blog", href: "#" }]}
+                transparent
+                sticky={false}
+                actions={<GlassButton size="sm" variant="glass">Get Started</GlassButton>}
+              />
+              <div className="px-6 py-12 text-center">
+                <h3 className="text-xl font-bold mb-2">Hero Section</h3>
+                <p className="text-sm text-muted-foreground">The navbar overlays this content transparently</p>
+              </div>
+            </div>
+          </div>
+        </ComponentPreview>
+      </div>
+
+      {/* Sticky scroll-reactive */}
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold">Sticky Scroll-Reactive Variant</h2>
         <p className="text-sm text-muted-foreground">
-          Set <code className="text-primary">scrollAware</code> to transition from transparent to solid on scroll.
+          Starts transparent, transitions to a solid glass background with border on scroll. Set <code className="text-primary">scrollAware</code> and <code className="text-primary">transparent</code> together.
         </p>
       </div>
 

@@ -30,6 +30,7 @@ import {
   Circle,
   Power,
   Inbox,
+  BarChart3,
 } from "lucide-react";
 
 const gettingStarted = [
@@ -65,6 +66,7 @@ const advancedComponents = [
   { title: "FAB", url: "/docs/components/fab", icon: Circle },
   { title: "Switch", url: "/docs/components/switch", icon: Power },
   { title: "Notification Center", url: "/docs/components/notifications", icon: Inbox },
+  { title: "Charts", url: "/docs/components/chart", icon: BarChart3 },
 ];
 
 function NavGroup({ label, items }: { label: string; items: typeof gettingStarted }) {
