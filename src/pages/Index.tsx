@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { motion } from "framer-motion";
-import { ArrowRight, Droplets, Github, Sparkles, Layers, Zap, Search, Bell, User, TrendingUp, TrendingDown, ChevronRight } from "lucide-react";
+import { ArrowRight, Gem, Github, Sparkles, Layers, Zap, Search, Bell, User, TrendingUp, TrendingDown, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GlassButton } from "@/components/glass/GlassButton";
 import { GlassCard } from "@/components/glass/GlassCard";
@@ -47,8 +47,8 @@ export default function Index() {
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-14">
           <div className="flex items-center gap-6">
             <Link to="/" className="flex items-center gap-2">
-              <Droplets className="h-5 w-5 text-primary" />
-              <span className="font-bold">Liquid Glass UI</span>
+              <Gem className="h-5 w-5 text-primary" />
+              <span className="font-bold">Glassic UI</span>
             </Link>
             <nav className="hidden md:flex items-center gap-1">
               {["Docs", "Components", "Charts", "Themes"].map((item) => (

@@ -3,7 +3,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { DocsSidebar } from "./DocsSidebar";
 import { ThemeToggle } from "./ThemeToggle";
 import { Link } from "react-router-dom";
-import { Github, Droplets } from "lucide-react";
+import { Github, Gem } from "lucide-react";
 
 export function DocsLayout() {
   return (
@@ -15,8 +15,8 @@ export function DocsLayout() {
             <div className="flex items-center gap-3">
               <SidebarTrigger className="mr-1" />
               <Link to="/" className="flex items-center gap-2 font-semibold text-foreground hover:text-primary transition-colors">
-                <Droplets className="h-5 w-5 text-primary" />
-                <span className="hidden sm:inline">Liquid Glass UI</span>
+                <Gem className="h-5 w-5 text-primary" />
+                <span className="hidden sm:inline">Glassic UI</span>
               </Link>
             </div>
             <div className="flex items-center gap-2">

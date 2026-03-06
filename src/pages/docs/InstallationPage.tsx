@@ -6,14 +6,14 @@ export default function InstallationPage() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight mb-2">Installation</h1>
         <p className="text-lg text-muted-foreground">
-          Get started with Liquid Glass UI in your project.
+          Get started with Glassic UI in your project.
         </p>
       </div>
 
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Prerequisites</h2>
         <p className="text-muted-foreground">
-          Liquid Glass UI is built on top of shadcn/ui. Make sure you have a project with:
+          Glassic UI requires a project with:
         </p>
         <ul className="space-y-1 text-muted-foreground ml-4">
           <li>• React 18+</li>
