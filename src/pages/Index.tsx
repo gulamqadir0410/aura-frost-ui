@@ -51,13 +51,20 @@ export default function Index() {
               <span className="font-bold">Glassic UI</span>
             </Link>
             <nav className="hidden md:flex items-center gap-1">
-              {["Docs", "Components", "Charts", "Themes"].map((item) => (
+              {[
+                { label: "Docs", to: "/docs/introduction" },
+                { label: "Components", to: "/docs/components/button" },
+                { label: "Charts", to: "/docs/components/chart" },
+                { label: "Themes", to: "/docs/colors" },
+                { label: "Crypto Demo", to: "/examples/crypto-tracker" },
+              ].map((item) => (
                 <Link
-                  key={item}
-                  to={item === "Docs" ? "/docs/introduction" : item === "Components" ? "/docs/components/button" : item === "Charts" ? "/docs/components/chart" : "/docs/colors"}
+                  key={item.label}
+                  to={item.to}
                   className="px-3 py-1.5 rounded-md text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  {item}
+                  {item.label}
+                </Link>
                 </Link>
               ))}
             </nav>
