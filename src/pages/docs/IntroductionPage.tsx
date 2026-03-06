@@ -6,14 +6,14 @@ export default function IntroductionPage() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight mb-2">Introduction</h1>
         <p className="text-lg text-muted-foreground">
-          A glassmorphism-inspired component library built on top of shadcn/ui, Radix UI, and Tailwind CSS.
+          A glassmorphism-inspired component library built on Radix UI and Tailwind CSS.
         </p>
       </div>
 
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Philosophy</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Liquid Glass UI brings Apple's design language to the web. Every component is designed to feel 
+          Glassic UI brings depth-aware design language to the web. Every component is designed to feel 
           <strong className="text-foreground"> translucent, layered, and depth-aware</strong> — like looking through frosted glass.
         </p>
         <p className="text-muted-foreground leading-relaxed">
@@ -39,7 +39,7 @@ export default function IntroductionPage() {
           </li>
           <li className="flex items-start gap-2">
             <span className="text-primary mt-1">●</span>
-            <span><strong className="text-foreground">Copy-Paste Ready</strong> — just like shadcn/ui, copy the code directly into your project</span>
+            <span><strong className="text-foreground">Copy-Paste Ready</strong> — copy the code directly into your project</span>
           </li>
           <li className="flex items-start gap-2">
             <span className="text-primary mt-1">●</span>

@@ -57,7 +57,7 @@ toast("Custom action", {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Usage</h2>
         <p className="text-sm text-muted-foreground">
-          Liquid Glass UI uses <code className="text-primary">sonner</code> for toast notifications. Import <code className="text-primary">toast</code> from sonner and call it anywhere in your app. The <code className="text-primary">{`<Sonner />`}</code> component is already mounted in the app root.
+          Glassic UI uses <code className="text-primary">sonner</code> for toast notifications. Import <code className="text-primary">toast</code> from sonner and call it anywhere in your app. The <code className="text-primary">{`<Sonner />`}</code> component is already mounted in the app root.
         </p>
       </div>
 
