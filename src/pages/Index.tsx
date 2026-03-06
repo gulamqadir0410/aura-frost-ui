@@ -65,7 +65,6 @@ export default function Index() {
                 >
                   {item.label}
                 </Link>
-                </Link>
               ))}
             </nav>
           </div>
