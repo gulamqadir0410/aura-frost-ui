@@ -121,7 +121,7 @@ export default function CryptoTrackerDemo() {
               { value: "30d", label: "30D" },
             ]}
             defaultValue="24h"
-            onChange={setTimeframe}
+            onValueChange={setTimeframe}
           />
         </div>
 

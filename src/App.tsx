@@ -32,6 +32,7 @@ import SegmentedPage from "./pages/docs/components/SegmentedPage";
 import FABPage from "./pages/docs/components/FABPage";
 import NotificationsPage from "./pages/docs/components/NotificationsPage";
 import ChartPage from "./pages/docs/components/ChartPage";
+import CryptoTrackerDemo from "./pages/CryptoTrackerDemo";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -43,6 +44,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/examples/crypto-tracker" element={<CryptoTrackerDemo />} />
             <Route path="/docs" element={<DocsLayout />}>
               <Route path="introduction" element={<IntroductionPage />} />
               <Route path="installation" element={<InstallationPage />} />
