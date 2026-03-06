@@ -16,7 +16,7 @@ interface Notification {
 
 const initialNotifications: Notification[] = [
   { id: "1", title: "New comment on your post", description: "Alice replied to your discussion about glassmorphism design patterns.", time: "2 minutes ago", read: false, category: "Messages", icon: <MessageSquare className="h-4 w-4" /> },
-  { id: "2", title: "Project starred", description: "Your Liquid Glass UI project received a new star.", time: "15 minutes ago", read: false, category: "Activity", icon: <Star className="h-4 w-4" /> },
+  { id: "2", title: "Project starred", description: "Your Glassic UI project received a new star.", time: "15 minutes ago", read: false, category: "Activity", icon: <Star className="h-4 w-4" /> },
   { id: "3", title: "Build failed", description: "Production deployment #42 failed with 2 errors.", time: "1 hour ago", read: false, category: "Alerts", icon: <AlertCircle className="h-4 w-4" /> },
   { id: "4", title: "New team member", description: "Bob joined your team as an editor.", time: "3 hours ago", read: true, category: "Activity", icon: <UserPlus className="h-4 w-4" /> },
   { id: "5", title: "Weekly digest available", description: "Your weekly report for the component library is ready.", time: "1 day ago", read: true, category: "Messages" },
