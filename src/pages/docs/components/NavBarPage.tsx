@@ -38,12 +38,42 @@ export default function NavBarPage() {
 
       {/* Default variant */}
       <ComponentPreview
-        code={`<GlassNavBar
-  brand={<span className="font-bold">LiquidUI</span>}
-  items={navItems}
-  actions={<GlassButton size="sm" variant="glass">Sign In</GlassButton>}
-  sticky={false}
-/>`}
+        code={`import { GlassNavBar } from "@/components/glass/GlassNavBar";
+import type { NavItem } from "@/components/glass/GlassNavBar";
+import { GlassButton } from "@/components/glass/GlassButton";
+import { Search } from "lucide-react";
+
+const navItems: NavItem[] = [
+  { label: "Home", href: "#" },
+  {
+    label: "Products",
+    children: [
+      { label: "Components", href: "#" },
+      { label: "Templates", href: "#" },
+      { label: "Themes", href: "#" },
+    ],
+  },
+  { label: "Docs", href: "#" },
+  { label: "Pricing", href: "#" },
+];
+
+function Example() {
+  return (
+    <GlassNavBar
+      brand={<span className="font-bold">LiquidUI</span>}
+      items={navItems}
+      sticky={false}
+      actions={
+        <div className="flex items-center gap-2">
+          <button className="p-2 rounded-lg text-muted-foreground hover:text-foreground transition-colors">
+            <Search className="h-4 w-4" />
+          </button>
+          <GlassButton size="sm" variant="glass">Sign In</GlassButton>
+        </div>
+      }
+    />
+  );
+}`}
       >
         <div className="w-full max-w-2xl">
           <GlassNavBar
@@ -66,7 +96,25 @@ export default function NavBarPage() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Minimal Variant</h2>
         <p className="text-sm text-muted-foreground">Clean, borderless navbar with minimal styling — no background, just text links.</p>
-        <ComponentPreview code={`<GlassNavBar brand="Logo" items={navItems} transparent sticky={false} />`}>
+        <ComponentPreview code={`import { GlassNavBar } from "@/components/glass/GlassNavBar";
+import type { NavItem } from "@/components/glass/GlassNavBar";
+
+const navItems: NavItem[] = [
+  { label: "About", href: "#" },
+  { label: "Work", href: "#" },
+  { label: "Contact", href: "#" },
+];
+
+function Example() {
+  return (
+    <GlassNavBar
+      brand={<span className="font-bold text-sm tracking-widest uppercase">Logo</span>}
+      items={navItems}
+      transparent
+      sticky={false}
+    />
+  );
+}`}>
           <div className="w-full max-w-2xl">
             <GlassNavBar
               brand={<span className="font-bold text-sm tracking-widest uppercase">Logo</span>}
@@ -82,7 +130,31 @@ export default function NavBarPage() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Centered Brand Variant</h2>
         <p className="text-sm text-muted-foreground">Brand centered between left and right navigation groups.</p>
-        <ComponentPreview code={`// Centered brand layout using custom composition`}>
+        <ComponentPreview code={`import { GlassButton } from "@/components/glass/GlassButton";
+
+function CenteredBrandNav() {
+  return (
+    <div className="glass-2 rounded-xl border border-border">
+      <div className="flex items-center justify-between h-14 px-4">
+        <div className="flex items-center gap-4">
+          <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Products
+          </a>
+          <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Features
+          </a>
+        </div>
+        <div className="font-bold text-lg">✦ LiquidUI</div>
+        <div className="flex items-center gap-4">
+          <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Pricing
+          </a>
+          <GlassButton size="sm" variant="glass">Sign Up</GlassButton>
+        </div>
+      </div>
+    </div>
+  );
+}`}>
           <div className="w-full max-w-2xl glass-2 rounded-xl border border-border">
             <div className="flex items-center justify-between h-14 px-4">
               <div className="flex items-center gap-4">
@@ -103,7 +175,42 @@ export default function NavBarPage() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Split Navigation Variant</h2>
         <p className="text-sm text-muted-foreground">Primary links on the left, secondary actions on the right with clear visual separation.</p>
-        <ComponentPreview code={`// Split navigation with grouped actions`}>
+        <ComponentPreview code={`import { Search, Bell, User } from "lucide-react";
+
+function SplitNav() {
+  return (
+    <div className="glass-2 rounded-xl border border-border">
+      <div className="flex items-center justify-between h-14 px-4">
+        <div className="flex items-center gap-6">
+          <span className="font-bold">LiquidUI</span>
+          <div className="h-4 w-px bg-border" />
+          <div className="flex items-center gap-1">
+            {["Dashboard", "Projects", "Team"].map((item) => (
+              <a
+                key={item}
+                href="#"
+                className="px-3 py-1.5 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors"
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <button className="p-2 rounded-lg text-muted-foreground hover:text-foreground transition-colors">
+            <Search className="h-4 w-4" />
+          </button>
+          <button className="p-2 rounded-lg text-muted-foreground hover:text-foreground transition-colors">
+            <Bell className="h-4 w-4" />
+          </button>
+          <div className="h-7 w-7 rounded-full bg-primary/20 flex items-center justify-center">
+            <User className="h-3.5 w-3.5 text-primary" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}`}>
           <div className="w-full max-w-2xl glass-2 rounded-xl border border-border">
             <div className="flex items-center justify-between h-14 px-4">
               <div className="flex items-center gap-6">
@@ -131,7 +238,28 @@ export default function NavBarPage() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Transparent / Overlay Variant</h2>
         <p className="text-sm text-muted-foreground">Fully transparent navbar designed to overlay hero sections, with <code className="text-primary">scrollAware</code> to solidify on scroll.</p>
-        <ComponentPreview code={`<GlassNavBar transparent scrollAware sticky={false} brand="LiquidUI" items={navItems} />`}>
+        <ComponentPreview code={`import { GlassNavBar } from "@/components/glass/GlassNavBar";
+import type { NavItem } from "@/components/glass/GlassNavBar";
+import { GlassButton } from "@/components/glass/GlassButton";
+
+const navItems: NavItem[] = [
+  { label: "Features", href: "#" },
+  { label: "Pricing", href: "#" },
+  { label: "Blog", href: "#" },
+];
+
+function Example() {
+  return (
+    <GlassNavBar
+      brand={<span className="font-bold text-foreground">LiquidUI</span>}
+      items={navItems}
+      transparent
+      scrollAware
+      sticky={false}
+      actions={<GlassButton size="sm" variant="glass">Get Started</GlassButton>}
+    />
+  );
+}`}>
           <div className="w-full max-w-2xl relative">
             <div className="absolute inset-0 rounded-xl gradient-bg opacity-60" />
             <div className="relative">

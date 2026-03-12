@@ -23,13 +23,32 @@ export default function CardPage() {
       </div>
 
       <ComponentPreview
-        code={`<GlassCard variant="default">
-  <GlassCardHeader>
-    <GlassCardTitle>Default Card</GlassCardTitle>
-    <GlassCardDescription>Glass level 1</GlassCardDescription>
-  </GlassCardHeader>
-  <GlassCardContent>Content here</GlassCardContent>
-</GlassCard>`}
+        code={`import {
+  GlassCard,
+  GlassCardHeader,
+  GlassCardTitle,
+  GlassCardDescription,
+  GlassCardContent,
+} from "@/components/glass/GlassCard";
+import { GlassButton } from "@/components/glass/GlassButton";
+
+function Example() {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {(["default", "elevated", "frosted", "floating"] as const).map((v) => (
+        <GlassCard key={v} variant={v} hover>
+          <GlassCardHeader>
+            <GlassCardTitle className="text-base capitalize">{v}</GlassCardTitle>
+            <GlassCardDescription>Glass card variant</GlassCardDescription>
+          </GlassCardHeader>
+          <GlassCardContent>
+            <GlassButton variant="glass" size="sm">Action</GlassButton>
+          </GlassCardContent>
+        </GlassCard>
+      ))}
+    </div>
+  );
+}`}
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-lg">
           {(["default", "elevated", "frosted", "floating"] as const).map((v) => (

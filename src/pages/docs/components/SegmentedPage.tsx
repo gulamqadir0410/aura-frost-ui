@@ -27,15 +27,28 @@ export default function SegmentedPage() {
       </div>
 
       <ComponentPreview
-        code={`<GlassSegmentedControl
-  segments={[
-    { value: "list", label: "List", icon: <List /> },
-    { value: "grid", label: "Grid", icon: <Grid3X3 /> },
-    { value: "cards", label: "Cards", icon: <LayoutGrid /> },
-  ]}
-  value={view}
-  onValueChange={setView}
-/>`}
+        code={`import { GlassSegmentedControl } from "@/components/glass/GlassSegmentedControl";
+import { useState } from "react";
+import { List, Grid3X3, LayoutGrid } from "lucide-react";
+
+function Example() {
+  const [view, setView] = useState("grid");
+
+  return (
+    <div className="flex flex-col items-center gap-6">
+      <GlassSegmentedControl
+        segments={[
+          { value: "list", label: "List", icon: <List className="h-4 w-4" /> },
+          { value: "grid", label: "Grid", icon: <Grid3X3 className="h-4 w-4" /> },
+          { value: "cards", label: "Cards", icon: <LayoutGrid className="h-4 w-4" /> },
+        ]}
+        value={view}
+        onValueChange={setView}
+      />
+      <span className="text-sm text-muted-foreground">Selected: {view}</span>
+    </div>
+  );
+}`}
       >
         <div className="flex flex-col items-center gap-6">
           <GlassSegmentedControl
@@ -54,14 +67,26 @@ export default function SegmentedPage() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Compact with Icons Only</h2>
         <ComponentPreview
-          code={`<GlassSegmentedControl
-  segments={[
-    { value: "left", label: "", icon: <AlignLeft /> },
-    { value: "center", label: "", icon: <AlignCenter /> },
-    { value: "right", label: "", icon: <AlignRight /> },
-  ]}
-  compact
-/>`}
+          code={`import { GlassSegmentedControl } from "@/components/glass/GlassSegmentedControl";
+import { useState } from "react";
+import { AlignLeft, AlignCenter, AlignRight } from "lucide-react";
+
+function Example() {
+  const [align, setAlign] = useState("left");
+
+  return (
+    <GlassSegmentedControl
+      segments={[
+        { value: "left", label: "", icon: <AlignLeft className="h-4 w-4" /> },
+        { value: "center", label: "", icon: <AlignCenter className="h-4 w-4" /> },
+        { value: "right", label: "", icon: <AlignRight className="h-4 w-4" /> },
+      ]}
+      value={align}
+      onValueChange={setAlign}
+      compact
+    />
+  );
+}`}
         >
           <GlassSegmentedControl
             segments={[
@@ -79,14 +104,25 @@ export default function SegmentedPage() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Full Width with Disabled</h2>
         <ComponentPreview
-          code={`<GlassSegmentedControl
-  segments={[
-    { value: "free", label: "Free" },
-    { value: "pro", label: "Pro" },
-    { value: "enterprise", label: "Enterprise", disabled: true },
-  ]}
-  fullWidth
-/>`}
+          code={`import { GlassSegmentedControl } from "@/components/glass/GlassSegmentedControl";
+import { useState } from "react";
+
+function Example() {
+  const [plan, setPlan] = useState("free");
+
+  return (
+    <GlassSegmentedControl
+      segments={[
+        { value: "free", label: "Free" },
+        { value: "pro", label: "Pro" },
+        { value: "enterprise", label: "Enterprise", disabled: true },
+      ]}
+      value={plan}
+      onValueChange={setPlan}
+      fullWidth
+    />
+  );
+}`}
         >
           <div className="w-full max-w-md">
             <GlassSegmentedControl

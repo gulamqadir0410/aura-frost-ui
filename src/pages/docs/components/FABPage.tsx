@@ -21,15 +21,39 @@ export default function FABPage() {
       </div>
 
       <ComponentPreview
-        code={`<GlassFAB
-  actions={[
-    { icon: <Edit />, label: "Edit", onClick: () => {} },
-    { icon: <Image />, label: "Upload", onClick: () => {} },
-    { icon: <Share2 />, label: "Share", onClick: () => {} },
-    { icon: <MessageSquare />, label: "Comment", onClick: () => {} },
-  ]}
-  position="bottom-right"
-/>`}
+        code={`import { GlassFAB } from "@/components/glass/GlassFAB";
+import { Edit, Image, Share2, MessageSquare } from "lucide-react";
+import { toast } from "sonner";
+
+function Example() {
+  return (
+    <GlassFAB
+      actions={[
+        {
+          icon: <Edit className="h-4 w-4" />,
+          label: "Edit",
+          onClick: () => toast("Edit clicked"),
+        },
+        {
+          icon: <Image className="h-4 w-4" />,
+          label: "Upload",
+          onClick: () => toast("Upload clicked"),
+        },
+        {
+          icon: <Share2 className="h-4 w-4" />,
+          label: "Share",
+          onClick: () => toast("Share clicked"),
+        },
+        {
+          icon: <MessageSquare className="h-4 w-4" />,
+          label: "Comment",
+          onClick: () => toast("Comment clicked"),
+        },
+      ]}
+      position="bottom-right"
+    />
+  );
+}`}
       >
         <div className="relative w-full h-[300px] rounded-xl overflow-hidden gradient-bg border border-border">
           <p className="absolute top-4 left-4 text-sm text-muted-foreground">Click the FAB in the bottom-right corner ↘</p>

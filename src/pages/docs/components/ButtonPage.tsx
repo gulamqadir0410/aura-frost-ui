@@ -21,12 +21,20 @@ export default function ButtonPage() {
       </div>
 
       <ComponentPreview
-        code={`<GlassButton variant="glass">Default Glass</GlassButton>
-<GlassButton variant="glass-elevated">Elevated</GlassButton>
-<GlassButton variant="glass-float">Floating</GlassButton>
-<GlassButton variant="solid">Solid</GlassButton>
-<GlassButton variant="outline">Outline</GlassButton>
-<GlassButton variant="destructive">Destructive</GlassButton>`}
+        code={`import { GlassButton } from "@/components/glass/GlassButton";
+
+function Example() {
+  return (
+    <div className="flex flex-wrap gap-3">
+      <GlassButton variant="glass">Default Glass</GlassButton>
+      <GlassButton variant="glass-elevated">Elevated</GlassButton>
+      <GlassButton variant="glass-float">Floating</GlassButton>
+      <GlassButton variant="solid">Solid</GlassButton>
+      <GlassButton variant="outline">Outline</GlassButton>
+      <GlassButton variant="destructive">Destructive</GlassButton>
+    </div>
+  );
+}`}
       >
         <div className="flex flex-wrap gap-3">
           <GlassButton variant="glass">Default Glass</GlassButton>
@@ -41,10 +49,19 @@ export default function ButtonPage() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Sizes</h2>
         <ComponentPreview
-          code={`<GlassButton size="sm">Small</GlassButton>
-<GlassButton size="default">Default</GlassButton>
-<GlassButton size="lg">Large</GlassButton>
-<GlassButton size="icon"><Heart /></GlassButton>`}
+          code={`import { GlassButton } from "@/components/glass/GlassButton";
+import { Heart } from "lucide-react";
+
+function Example() {
+  return (
+    <div className="flex items-center gap-3">
+      <GlassButton size="sm">Small</GlassButton>
+      <GlassButton size="default">Default</GlassButton>
+      <GlassButton size="lg">Large</GlassButton>
+      <GlassButton size="icon"><Heart className="h-4 w-4" /></GlassButton>
+    </div>
+  );
+}`}
         >
           <div className="flex items-center gap-3">
             <GlassButton size="sm">Small</GlassButton>
@@ -58,9 +75,18 @@ export default function ButtonPage() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">With Icons & Loading</h2>
         <ComponentPreview
-          code={`<GlassButton>Continue <ArrowRight /></GlassButton>
-<GlassButton><Download /> Download</GlassButton>
-<GlassButton loading>Processing...</GlassButton>`}
+          code={`import { GlassButton } from "@/components/glass/GlassButton";
+import { ArrowRight, Download } from "lucide-react";
+
+function Example() {
+  return (
+    <div className="flex gap-3">
+      <GlassButton>Continue <ArrowRight className="h-4 w-4" /></GlassButton>
+      <GlassButton><Download className="h-4 w-4" /> Download</GlassButton>
+      <GlassButton loading>Processing...</GlassButton>
+    </div>
+  );
+}`}
         >
           <div className="flex gap-3">
             <GlassButton>Continue <ArrowRight className="h-4 w-4" /></GlassButton>

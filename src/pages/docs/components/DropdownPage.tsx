@@ -29,39 +29,74 @@ export default function DropdownPage() {
       </div>
 
       <ComponentPreview
-        code={`<GlassDropdown>
-  <GlassDropdownTrigger asChild>
-    <GlassButton variant="glass">Open Menu</GlassButton>
-  </GlassDropdownTrigger>
-  <GlassDropdownContent>
-    <GlassDropdownLabel>My Account</GlassDropdownLabel>
-    <GlassDropdownSeparator />
-    <GlassDropdownItem>
-      <User className="mr-2 h-4 w-4" /> Profile
-      <GlassDropdownShortcut>⇧⌘P</GlassDropdownShortcut>
-    </GlassDropdownItem>
-    <GlassDropdownItem>
-      <Settings className="mr-2 h-4 w-4" /> Settings
-    </GlassDropdownItem>
-    <GlassDropdownSub>
-      <GlassDropdownSubTrigger>
-        <Mail className="mr-2 h-4 w-4" /> Invite
-      </GlassDropdownSubTrigger>
-      <GlassDropdownSubContent>
-        <GlassDropdownItem>Email</GlassDropdownItem>
-        <GlassDropdownItem>Message</GlassDropdownItem>
-      </GlassDropdownSubContent>
-    </GlassDropdownSub>
-    <GlassDropdownSeparator />
-    <GlassDropdownCheckboxItem checked={showStatus} onCheckedChange={setShowStatus}>
-      Show Status
-    </GlassDropdownCheckboxItem>
-    <GlassDropdownSeparator />
-    <GlassDropdownItem>
-      <LogOut className="mr-2 h-4 w-4" /> Log out
-    </GlassDropdownItem>
-  </GlassDropdownContent>
-</GlassDropdown>`}
+        code={`import {
+  GlassDropdown,
+  GlassDropdownTrigger,
+  GlassDropdownContent,
+  GlassDropdownItem,
+  GlassDropdownLabel,
+  GlassDropdownSeparator,
+  GlassDropdownCheckboxItem,
+  GlassDropdownSub,
+  GlassDropdownSubTrigger,
+  GlassDropdownSubContent,
+  GlassDropdownShortcut,
+} from "@/components/glass/GlassDropdown";
+import { GlassButton } from "@/components/glass/GlassButton";
+import { useState } from "react";
+import { User, Settings, LogOut, CreditCard, Mail, PlusCircle } from "lucide-react";
+
+function Example() {
+  const [showStatus, setShowStatus] = useState(true);
+  const [showActivity, setShowActivity] = useState(false);
+
+  return (
+    <GlassDropdown>
+      <GlassDropdownTrigger asChild>
+        <GlassButton variant="glass">Open Menu</GlassButton>
+      </GlassDropdownTrigger>
+      <GlassDropdownContent>
+        <GlassDropdownLabel>My Account</GlassDropdownLabel>
+        <GlassDropdownSeparator />
+        <GlassDropdownItem>
+          <User className="mr-2 h-4 w-4" /> Profile
+          <GlassDropdownShortcut>⇧⌘P</GlassDropdownShortcut>
+        </GlassDropdownItem>
+        <GlassDropdownItem>
+          <CreditCard className="mr-2 h-4 w-4" /> Billing
+        </GlassDropdownItem>
+        <GlassDropdownItem>
+          <Settings className="mr-2 h-4 w-4" /> Settings
+        </GlassDropdownItem>
+        <GlassDropdownSub>
+          <GlassDropdownSubTrigger>
+            <Mail className="mr-2 h-4 w-4" /> Invite Users
+          </GlassDropdownSubTrigger>
+          <GlassDropdownSubContent>
+            <GlassDropdownItem>
+              <Mail className="mr-2 h-4 w-4" /> Email
+            </GlassDropdownItem>
+            <GlassDropdownItem>
+              <PlusCircle className="mr-2 h-4 w-4" /> Link
+            </GlassDropdownItem>
+          </GlassDropdownSubContent>
+        </GlassDropdownSub>
+        <GlassDropdownSeparator />
+        <GlassDropdownCheckboxItem checked={showStatus} onCheckedChange={setShowStatus}>
+          Show Status Bar
+        </GlassDropdownCheckboxItem>
+        <GlassDropdownCheckboxItem checked={showActivity} onCheckedChange={setShowActivity}>
+          Show Activity
+        </GlassDropdownCheckboxItem>
+        <GlassDropdownSeparator />
+        <GlassDropdownItem>
+          <LogOut className="mr-2 h-4 w-4" /> Log out
+          <GlassDropdownShortcut>⇧⌘Q</GlassDropdownShortcut>
+        </GlassDropdownItem>
+      </GlassDropdownContent>
+    </GlassDropdown>
+  );
+}`}
       >
         <GlassDropdown>
           <GlassDropdownTrigger asChild>

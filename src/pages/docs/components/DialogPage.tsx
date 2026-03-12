@@ -20,21 +20,42 @@ export default function DialogPage() {
       </div>
 
       <ComponentPreview
-        code={`<GlassDialog>
-  <GlassDialogTrigger asChild>
-    <GlassButton>Open Dialog</GlassButton>
-  </GlassDialogTrigger>
-  <GlassDialogContent>
-    <GlassDialogHeader>
-      <GlassDialogTitle>Glass Dialog</GlassDialogTitle>
-      <GlassDialogDescription>
-        A translucent dialog with depth layering.
-      </GlassDialogDescription>
-    </GlassDialogHeader>
-    <GlassInput placeholder="Enter something..." />
-    <GlassButton variant="solid">Submit</GlassButton>
-  </GlassDialogContent>
-</GlassDialog>`}
+        code={`import {
+  GlassDialog,
+  GlassDialogTrigger,
+  GlassDialogContent,
+  GlassDialogHeader,
+  GlassDialogTitle,
+  GlassDialogDescription,
+} from "@/components/glass/GlassDialog";
+import { GlassButton } from "@/components/glass/GlassButton";
+import { GlassInput } from "@/components/glass/GlassInput";
+
+function Example() {
+  return (
+    <GlassDialog>
+      <GlassDialogTrigger asChild>
+        <GlassButton>Open Dialog</GlassButton>
+      </GlassDialogTrigger>
+      <GlassDialogContent>
+        <GlassDialogHeader>
+          <GlassDialogTitle>Glass Dialog</GlassDialogTitle>
+          <GlassDialogDescription>
+            A translucent dialog with frosted glass background and depth layering.
+          </GlassDialogDescription>
+        </GlassDialogHeader>
+        <div className="space-y-3">
+          <GlassInput placeholder="Enter your name..." />
+          <GlassInput type="email" placeholder="Enter your email..." />
+        </div>
+        <div className="flex justify-end gap-2 mt-2">
+          <GlassButton variant="ghost">Cancel</GlassButton>
+          <GlassButton variant="solid">Submit</GlassButton>
+        </div>
+      </GlassDialogContent>
+    </GlassDialog>
+  );
+}`}
       >
         <GlassDialog>
           <GlassDialogTrigger asChild>
