@@ -33,9 +33,25 @@ export default function SwitchPage() {
       </div>
 
       <ComponentPreview
-        code={`<GlassSwitch checked={checked} onCheckedChange={setChecked} />
-<GlassSwitch disabled />
-<GlassSwitch loading />`}
+        code={`import { GlassSwitch } from "@/components/glass/GlassSwitch";
+import { useState } from "react";
+
+function Example() {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <div className="flex flex-col gap-4 items-start">
+      <div className="flex items-center gap-3">
+        <GlassSwitch checked={checked} onCheckedChange={setChecked} />
+        <span className="text-sm text-muted-foreground">{checked ? "On" : "Off"}</span>
+      </div>
+      <div className="flex items-center gap-3">
+        <GlassSwitch disabled />
+        <span className="text-sm text-muted-foreground">Disabled</span>
+      </div>
+    </div>
+  );
+}`}
       >
         <div className="flex flex-col gap-4 items-start">
           <div className="flex items-center gap-3">
@@ -52,12 +68,21 @@ export default function SwitchPage() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">With Label & Description</h2>
         <ComponentPreview
-          code={`<GlassSwitch
-  label="Email Notifications"
-  description="Receive alerts for new activity"
-  checked={notifications}
-  onCheckedChange={setNotifications}
-/>`}
+          code={`import { GlassSwitch } from "@/components/glass/GlassSwitch";
+import { useState } from "react";
+
+function Example() {
+  const [notifications, setNotifications] = useState(true);
+
+  return (
+    <GlassSwitch
+      label="Email Notifications"
+      description="Receive alerts when someone mentions you"
+      checked={notifications}
+      onCheckedChange={setNotifications}
+    />
+  );
+}`}
         >
           <GlassSwitch
             label="Email Notifications"
@@ -71,11 +96,34 @@ export default function SwitchPage() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Loading State</h2>
         <ComponentPreview
-          code={`<GlassSwitch
-  loading={isLoading}
-  checked={checked}
-  onCheckedChange={handleAsync}
-/>`}
+          code={`import { GlassSwitch } from "@/components/glass/GlassSwitch";
+import { useState } from "react";
+
+function Example() {
+  const [checked, setChecked] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleToggle = (val: boolean) => {
+    setLoading(true);
+    setTimeout(() => {
+      setChecked(val);
+      setLoading(false);
+    }, 1000);
+  };
+
+  return (
+    <div className="flex items-center gap-3">
+      <GlassSwitch
+        loading={loading}
+        checked={checked}
+        onCheckedChange={handleToggle}
+      />
+      <span className="text-sm text-muted-foreground">
+        {loading ? "Saving..." : checked ? "Enabled" : "Disabled"}
+      </span>
+    </div>
+  );
+}`}
         >
           <div className="flex items-center gap-3">
             <GlassSwitch

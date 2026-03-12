@@ -40,12 +40,79 @@ export default function NotificationsPage() {
       </div>
 
       <ComponentPreview
-        code={`<GlassNotificationCenter
-  notifications={notifications}
-  onMarkRead={(id) => markAsRead(id)}
-  onMarkAllRead={() => markAllRead()}
-  onDismiss={(id) => dismiss(id)}
-/>`}
+        code={`import { GlassNotificationCenter } from "@/components/glass/GlassNotificationCenter";
+import { useState } from "react";
+import { MessageSquare, Star, AlertCircle, UserPlus } from "lucide-react";
+
+interface Notification {
+  id: string;
+  title: string;
+  description?: string;
+  time?: string;
+  read?: boolean;
+  category?: string;
+  icon?: React.ReactNode;
+}
+
+const initialNotifications: Notification[] = [
+  {
+    id: "1",
+    title: "New comment on your post",
+    description: "Alice replied to your discussion.",
+    time: "2 minutes ago",
+    read: false,
+    category: "Messages",
+    icon: <MessageSquare className="h-4 w-4" />,
+  },
+  {
+    id: "2",
+    title: "Project starred",
+    description: "Your project received a new star.",
+    time: "15 minutes ago",
+    read: false,
+    category: "Activity",
+    icon: <Star className="h-4 w-4" />,
+  },
+  {
+    id: "3",
+    title: "Build failed",
+    description: "Production deployment #42 failed.",
+    time: "1 hour ago",
+    read: false,
+    category: "Alerts",
+    icon: <AlertCircle className="h-4 w-4" />,
+  },
+  {
+    id: "4",
+    title: "New team member",
+    description: "Bob joined your team as an editor.",
+    time: "3 hours ago",
+    read: true,
+    category: "Activity",
+    icon: <UserPlus className="h-4 w-4" />,
+  },
+];
+
+function Example() {
+  const [notifications, setNotifications] = useState<Notification[]>(initialNotifications);
+
+  return (
+    <GlassNotificationCenter
+      notifications={notifications}
+      onMarkRead={(id) =>
+        setNotifications((prev) =>
+          prev.map((n) => (n.id === id ? { ...n, read: true } : n))
+        )
+      }
+      onMarkAllRead={() =>
+        setNotifications((prev) => prev.map((n) => ({ ...n, read: true })))
+      }
+      onDismiss={(id) =>
+        setNotifications((prev) => prev.filter((n) => n.id !== id))
+      }
+    />
+  );
+}`}
       >
         <div className="relative flex justify-end w-full min-h-[400px]">
           <div className="relative z-10">

@@ -18,7 +18,17 @@ export default function ChartPage() {
         <p className="text-lg text-muted-foreground">Glassmorphic chart components powered by Recharts with soft blur styling.</p>
       </div>
 
-      <ComponentPreview code={`<GlassChart variant="area" title="Revenue Overview" description="Monthly revenue vs expenses" />`}>
+      <ComponentPreview code={`import { GlassChart } from "@/components/glass/GlassChart";
+
+function Example() {
+  return (
+    <GlassChart
+      variant="area"
+      title="Revenue Overview"
+      description="Monthly revenue vs expenses"
+    />
+  );
+}`}>
         <div className="w-full max-w-xl">
           <GlassChart variant="area" title="Revenue Overview" description="Monthly revenue vs expenses" />
         </div>
@@ -26,7 +36,17 @@ export default function ChartPage() {
 
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Bar Chart</h2>
-        <ComponentPreview code={`<GlassChart variant="bar" title="Weekly Visitors" />`}>
+        <ComponentPreview code={`import { GlassChart } from "@/components/glass/GlassChart";
+
+function Example() {
+  return (
+    <GlassChart
+      variant="bar"
+      title="Weekly Visitors"
+      description="Daily visitor count"
+    />
+  );
+}`}>
           <div className="w-full max-w-xl">
             <GlassChart variant="bar" title="Weekly Visitors" description="Daily visitor count" />
           </div>
@@ -35,7 +55,17 @@ export default function ChartPage() {
 
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Line Chart</h2>
-        <ComponentPreview code={`<GlassChart variant="line" title="Trends" />`}>
+        <ComponentPreview code={`import { GlassChart } from "@/components/glass/GlassChart";
+
+function Example() {
+  return (
+    <GlassChart
+      variant="line"
+      title="Trend Analysis"
+      description="Revenue and expenses over time"
+    />
+  );
+}`}>
           <div className="w-full max-w-xl">
             <GlassChart variant="line" title="Trend Analysis" description="Revenue and expenses over time" />
           </div>
@@ -44,7 +74,17 @@ export default function ChartPage() {
 
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Pie / Donut Chart</h2>
-        <ComponentPreview code={`<GlassChart variant="pie" title="Device Breakdown" />`}>
+        <ComponentPreview code={`import { GlassChart } from "@/components/glass/GlassChart";
+
+function Example() {
+  return (
+    <GlassChart
+      variant="pie"
+      title="Device Breakdown"
+      description="Traffic by device type"
+    />
+  );
+}`}>
           <div className="w-full max-w-md">
             <GlassChart variant="pie" title="Device Breakdown" description="Traffic by device type" />
           </div>

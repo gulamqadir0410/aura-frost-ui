@@ -37,16 +37,35 @@ export default function TabsPage() {
       </div>
 
       <ComponentPreview
-        code={`<GlassTabs defaultValue="account">
-  <GlassTabsList>
-    <GlassTabsTrigger value="account" icon={<User />}>Account</GlassTabsTrigger>
-    <GlassTabsTrigger value="password" icon={<Settings />}>Password</GlassTabsTrigger>
-    <GlassTabsTrigger value="notifications" icon={<Bell />} badge="3">
-      Notifications
-    </GlassTabsTrigger>
-  </GlassTabsList>
-  <GlassTabsContent value="account">...</GlassTabsContent>
-</GlassTabs>`}
+        code={`import { GlassTabs, GlassTabsList, GlassTabsTrigger, GlassTabsContent } from "@/components/glass/GlassTabs";
+import { User, Settings, Bell } from "lucide-react";
+
+function Example() {
+  return (
+    <GlassTabs defaultValue="account">
+      <GlassTabsList>
+        <GlassTabsTrigger value="account" icon={<User className="h-4 w-4" />}>
+          Account
+        </GlassTabsTrigger>
+        <GlassTabsTrigger value="password" icon={<Settings className="h-4 w-4" />}>
+          Password
+        </GlassTabsTrigger>
+        <GlassTabsTrigger value="notifications" icon={<Bell className="h-4 w-4" />} badge="3">
+          Notifications
+        </GlassTabsTrigger>
+      </GlassTabsList>
+      <GlassTabsContent value="account" className="glass-1 rounded-xl p-4">
+        <p className="text-sm text-muted-foreground">Manage your account settings and preferences.</p>
+      </GlassTabsContent>
+      <GlassTabsContent value="password" className="glass-1 rounded-xl p-4">
+        <p className="text-sm text-muted-foreground">Change your password and security settings.</p>
+      </GlassTabsContent>
+      <GlassTabsContent value="notifications" className="glass-1 rounded-xl p-4">
+        <p className="text-sm text-muted-foreground">Configure notification preferences.</p>
+      </GlassTabsContent>
+    </GlassTabs>
+  );
+}`}
       >
         <GlassTabs defaultValue="account" className="w-full max-w-md">
           <GlassTabsList>
@@ -69,9 +88,41 @@ export default function TabsPage() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Closable Tabs</h2>
         <ComponentPreview
-          code={`<GlassTabsTrigger value="tab" closable onClose={() => removeTab("tab")}>
-  Tab Name
-</GlassTabsTrigger>`}
+          code={`import { GlassTabs, GlassTabsList, GlassTabsTrigger, GlassTabsContent } from "@/components/glass/GlassTabs";
+import { useState } from "react";
+
+function ClosableTabsExample() {
+  const [tabs, setTabs] = useState(["Account", "Password", "Settings", "Billing"]);
+  const [activeTab, setActiveTab] = useState("Account");
+
+  const closeTab = (tab: string) => {
+    const next = tabs.filter((t) => t !== tab);
+    setTabs(next);
+    if (activeTab === tab && next.length > 0) setActiveTab(next[0]);
+  };
+
+  return (
+    <GlassTabs value={activeTab} onValueChange={setActiveTab}>
+      <GlassTabsList>
+        {tabs.map((tab) => (
+          <GlassTabsTrigger
+            key={tab}
+            value={tab}
+            closable={tabs.length > 1}
+            onClose={() => closeTab(tab)}
+          >
+            {tab}
+          </GlassTabsTrigger>
+        ))}
+      </GlassTabsList>
+      {tabs.map((tab) => (
+        <GlassTabsContent key={tab} value={tab} className="glass-1 rounded-xl p-4">
+          <p className="text-sm text-muted-foreground">Content for {tab} tab.</p>
+        </GlassTabsContent>
+      ))}
+    </GlassTabs>
+  );
+}`}
         >
           <GlassTabs value={activeTab} onValueChange={setActiveTab} className="w-full max-w-md">
             <GlassTabsList>
@@ -98,10 +149,38 @@ export default function TabsPage() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Vertical Layout</h2>
         <ComponentPreview
-          code={`<GlassTabs orientation="vertical" defaultValue="general">
-  <GlassTabsList orientation="vertical">...</GlassTabsList>
-  <GlassTabsContent value="general">...</GlassTabsContent>
-</GlassTabs>`}
+          code={`import { GlassTabs, GlassTabsList, GlassTabsTrigger, GlassTabsContent } from "@/components/glass/GlassTabs";
+import { Home, User, Settings } from "lucide-react";
+
+function VerticalTabsExample() {
+  return (
+    <GlassTabs orientation="vertical" defaultValue="general">
+      <GlassTabsList orientation="vertical">
+        <GlassTabsTrigger value="general" icon={<Home className="h-4 w-4" />}>
+          General
+        </GlassTabsTrigger>
+        <GlassTabsTrigger value="profile" icon={<User className="h-4 w-4" />}>
+          Profile
+        </GlassTabsTrigger>
+        <GlassTabsTrigger value="settings" icon={<Settings className="h-4 w-4" />}>
+          Settings
+        </GlassTabsTrigger>
+        <GlassTabsTrigger value="disabled" disabled>
+          Disabled
+        </GlassTabsTrigger>
+      </GlassTabsList>
+      <GlassTabsContent value="general" className="glass-1 rounded-xl p-4 flex-1">
+        <p className="text-sm text-muted-foreground">General application settings.</p>
+      </GlassTabsContent>
+      <GlassTabsContent value="profile" className="glass-1 rounded-xl p-4 flex-1">
+        <p className="text-sm text-muted-foreground">Profile configuration.</p>
+      </GlassTabsContent>
+      <GlassTabsContent value="settings" className="glass-1 rounded-xl p-4 flex-1">
+        <p className="text-sm text-muted-foreground">Advanced settings.</p>
+      </GlassTabsContent>
+    </GlassTabs>
+  );
+}`}
         >
           <GlassTabs orientation="vertical" defaultValue="general" className="w-full max-w-md">
             <GlassTabsList orientation="vertical">

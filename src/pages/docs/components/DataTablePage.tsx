@@ -64,20 +64,60 @@ export default function DataTablePage() {
       </div>
 
       <ComponentPreview
-        code={`<GlassDataTable
-  columns={[
-    { key: "name", header: "Name", sortable: true },
-    { key: "email", header: "Email", sortable: true },
-    { key: "role", header: "Role", sortable: true },
-    { key: "status", header: "Status", sortable: true, render: (val) => (
-      <span className="badge">{val}</span>
-    )},
-  ]}
-  data={users}
-  selectable
-  pageSize={5}
-  expandable={(row) => <p>Details for {row.name}</p>}
-/>`}
+        code={`import { GlassDataTable, type Column } from "@/components/glass/GlassDataTable";
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  role: string;
+  status: string;
+}
+
+const users: User[] = [
+  { id: 1, name: "Alice Johnson", email: "alice@example.com", role: "Admin", status: "Active" },
+  { id: 2, name: "Bob Smith", email: "bob@example.com", role: "Editor", status: "Active" },
+  { id: 3, name: "Carol Williams", email: "carol@example.com", role: "Viewer", status: "Inactive" },
+  { id: 4, name: "Dave Brown", email: "dave@example.com", role: "Editor", status: "Active" },
+  { id: 5, name: "Eve Davis", email: "eve@example.com", role: "Admin", status: "Active" },
+];
+
+const columns: Column<User>[] = [
+  { key: "name", header: "Name", sortable: true },
+  { key: "email", header: "Email", sortable: true },
+  { key: "role", header: "Role", sortable: true },
+  {
+    key: "status",
+    header: "Status",
+    sortable: true,
+    render: (val: string) => (
+      <span className={\`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium \${
+        val === "Active"
+          ? "bg-green-500/10 text-green-600 dark:text-green-400"
+          : "bg-muted text-muted-foreground"
+      }\`}>
+        {val}
+      </span>
+    ),
+  },
+];
+
+function Example() {
+  return (
+    <GlassDataTable
+      columns={columns}
+      data={users}
+      selectable
+      pageSize={5}
+      expandable={(row) => (
+        <div className="text-sm text-muted-foreground">
+          <p>Full details for <strong className="text-foreground">{row.name}</strong></p>
+          <p className="mt-1">Email: {row.email} · Role: {row.role} · Status: {row.status}</p>
+        </div>
+      )}
+    />
+  );
+}`}
       >
         <div className="w-full">
           <GlassDataTable
@@ -97,7 +137,16 @@ export default function DataTablePage() {
 
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Loading State</h2>
-        <ComponentPreview code={`<GlassDataTable columns={columns} data={[]} loading />`}>
+        <ComponentPreview code={`import { GlassDataTable, type Column } from "@/components/glass/GlassDataTable";
+
+const columns: Column<{ name: string; email: string }>[] = [
+  { key: "name", header: "Name", sortable: true },
+  { key: "email", header: "Email", sortable: true },
+];
+
+function Example() {
+  return <GlassDataTable columns={columns} data={[]} loading />;
+}`}>
           <div className="w-full">
             <GlassDataTable columns={columns} data={[]} loading />
           </div>

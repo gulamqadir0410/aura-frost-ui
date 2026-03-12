@@ -35,17 +35,94 @@ export default function CommandPage() {
       </div>
 
       <ComponentPreview
-        code={`<GlassCommandPalette
-  open={open}
-  onOpenChange={setOpen}
-  items={[
-    { id: "docs", label: "Go to Docs", icon: <FileText />, category: "Navigation" },
-    { id: "settings", label: "Settings", icon: <Settings />, category: "Navigation" },
-    { id: "search", label: "Search", icon: <Search />, category: "Actions" },
-  ]}
-  recentIds={["docs"]}
-/>
-// Opens with Ctrl/Cmd + K`}
+        code={`import { GlassCommandPalette } from "@/components/glass/GlassCommandPalette";
+import { GlassButton } from "@/components/glass/GlassButton";
+import { useState } from "react";
+import { FileText, Settings, Users, BarChart3, Search, Mail, Globe } from "lucide-react";
+
+const commandItems = [
+  {
+    id: "docs",
+    label: "Go to Documentation",
+    description: "Browse component docs",
+    icon: <FileText className="h-4 w-4" />,
+    category: "Navigation",
+    onSelect: () => console.log("Navigate to docs"),
+  },
+  {
+    id: "settings",
+    label: "Open Settings",
+    description: "Manage preferences",
+    icon: <Settings className="h-4 w-4" />,
+    category: "Navigation",
+    onSelect: () => console.log("Open settings"),
+  },
+  {
+    id: "team",
+    label: "Team Members",
+    description: "View and manage team",
+    icon: <Users className="h-4 w-4" />,
+    category: "Navigation",
+    onSelect: () => console.log("View team"),
+  },
+  {
+    id: "analytics",
+    label: "View Analytics",
+    description: "Dashboard and reports",
+    icon: <BarChart3 className="h-4 w-4" />,
+    category: "Navigation",
+    onSelect: () => console.log("View analytics"),
+  },
+  {
+    id: "search",
+    label: "Search Components",
+    description: "Find a component",
+    icon: <Search className="h-4 w-4" />,
+    category: "Actions",
+    keywords: ["find", "look"],
+    onSelect: () => console.log("Search"),
+  },
+  {
+    id: "invite",
+    label: "Invite Collaborator",
+    description: "Send an invite link",
+    icon: <Mail className="h-4 w-4" />,
+    category: "Actions",
+    onSelect: () => console.log("Invite"),
+  },
+  {
+    id: "deploy",
+    label: "Deploy to Production",
+    description: "Push current build",
+    icon: <Globe className="h-4 w-4" />,
+    category: "Actions",
+    onSelect: () => console.log("Deploy"),
+  },
+];
+
+function Example() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <GlassButton onClick={() => setOpen(true)} variant="glass">
+        <Search className="h-4 w-4 mr-2" />
+        Open Command Palette
+        <kbd className="ml-3 text-[10px] border border-border rounded px-1.5 py-0.5 text-muted-foreground">
+          ⌘K
+        </kbd>
+      </GlassButton>
+      <GlassCommandPalette
+        open={open}
+        onOpenChange={setOpen}
+        items={commandItems}
+        recentIds={["docs", "settings"]}
+      />
+    </>
+  );
+}
+
+// The palette also opens with Ctrl/Cmd + K keyboard shortcut`}
       >
         <div className="flex flex-col items-center gap-4">
           <GlassButton onClick={() => setOpen(true)} variant="glass">

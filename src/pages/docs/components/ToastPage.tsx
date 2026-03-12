@@ -3,10 +3,6 @@ import { PropsTable } from "@/components/PropsTable";
 import { GlassButton } from "@/components/glass/GlassButton";
 import { toast } from "sonner";
 
-const toastExamples = [
-  { name: "notifications", type: "Notification[]", description: "Array of notification objects with title, description, time, read, category" },
-];
-
 export default function ToastPage() {
   return (
     <div className="space-y-8 animate-fade-in">
@@ -17,14 +13,48 @@ export default function ToastPage() {
 
       <ComponentPreview
         code={`import { toast } from "sonner";
+import { GlassButton } from "@/components/glass/GlassButton";
 
-toast("Event has been created");
-toast.success("Successfully saved!");
-toast.error("Something went wrong");
-toast.warning("Please check your input");
-toast("Custom action", {
-  action: { label: "Undo", onClick: () => {} },
-});`}
+function Example() {
+  return (
+    <div className="flex flex-wrap gap-3">
+      <GlassButton variant="glass" onClick={() => toast("Event has been created")}>
+        Default Toast
+      </GlassButton>
+      <GlassButton variant="glass" onClick={() => toast.success("Successfully saved!")}>
+        Success
+      </GlassButton>
+      <GlassButton variant="glass" onClick={() => toast.error("Something went wrong")}>
+        Error
+      </GlassButton>
+      <GlassButton variant="glass" onClick={() => toast.warning("Please check your input")}>
+        Warning
+      </GlassButton>
+      <GlassButton
+        variant="glass"
+        onClick={() =>
+          toast("File uploaded", {
+            description: "Your document has been saved to the cloud.",
+            action: { label: "Undo", onClick: () => toast("Undone!") },
+          })
+        }
+      >
+        With Action
+      </GlassButton>
+      <GlassButton
+        variant="glass"
+        onClick={() => {
+          const id = toast.loading("Uploading...");
+          setTimeout(() => toast.success("Done!", { id }), 2000);
+        }}
+      >
+        Loading → Success
+      </GlassButton>
+    </div>
+  );
+}
+
+// Note: Ensure <Sonner /> is mounted in your app root.`}
       >
         <div className="flex flex-wrap gap-3">
           <GlassButton variant="glass" onClick={() => toast("Event has been created")}>

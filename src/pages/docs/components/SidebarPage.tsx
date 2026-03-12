@@ -49,23 +49,51 @@ export default function SidebarPage() {
       </div>
 
       <ComponentPreview
-        code={`<GlassSidebar
-  groups={[
-    { label: "Main", items: [
-      { label: "Dashboard", icon: <Home />, active: true },
-      { label: "Analytics", icon: <BarChart3 /> },
-    ]},
-    { label: "Content", items: [
-      { label: "Documents", icon: <FileText />, children: [
-        { label: "Drafts" },
-        { label: "Published" },
-      ]},
-    ]},
-  ]}
-  collapsed={collapsed}
-  onCollapsedChange={setCollapsed}
-  hoverExpand
-/>`}
+        code={`import { GlassSidebar } from "@/components/glass/GlassSidebar";
+import type { SidebarGroup } from "@/components/glass/GlassSidebar";
+import { useState } from "react";
+import { Home, Settings, Users, FileText, BarChart3, Inbox, Star } from "lucide-react";
+
+const groups: SidebarGroup[] = [
+  {
+    label: "Main",
+    items: [
+      { label: "Dashboard", icon: <Home className="h-4 w-4" />, active: true },
+      { label: "Analytics", icon: <BarChart3 className="h-4 w-4" /> },
+      { label: "Messages", icon: <Inbox className="h-4 w-4" /> },
+    ],
+  },
+  {
+    label: "Content",
+    items: [
+      {
+        label: "Documents",
+        icon: <FileText className="h-4 w-4" />,
+        children: [
+          { label: "Drafts", icon: <FileText className="h-4 w-4" /> },
+          { label: "Published", icon: <Star className="h-4 w-4" /> },
+        ],
+      },
+      { label: "Team", icon: <Users className="h-4 w-4" /> },
+      { label: "Settings", icon: <Settings className="h-4 w-4" /> },
+    ],
+  },
+];
+
+function Example() {
+  const [collapsed, setCollapsed] = useState(false);
+
+  return (
+    <div className="h-[400px] w-full max-w-md rounded-xl overflow-hidden border border-border">
+      <GlassSidebar
+        groups={groups}
+        collapsed={collapsed}
+        onCollapsedChange={setCollapsed}
+        hoverExpand
+      />
+    </div>
+  );
+}`}
       >
         <div className="h-[400px] w-full max-w-md rounded-xl overflow-hidden border border-border">
           <GlassSidebar

@@ -18,9 +18,18 @@ export default function InputPage() {
       </div>
 
       <ComponentPreview
-        code={`<GlassInput placeholder="Type something..." />
-<GlassInput type="email" placeholder="Email address" />
-<GlassInput disabled placeholder="Disabled" />`}
+        code={`import { GlassInput } from "@/components/glass/GlassInput";
+
+function Example() {
+  return (
+    <div className="flex flex-col gap-3 w-full max-w-sm">
+      <GlassInput placeholder="Type something..." />
+      <GlassInput type="email" placeholder="Email address" />
+      <GlassInput type="password" placeholder="Password" />
+      <GlassInput disabled placeholder="Disabled" />
+    </div>
+  );
+}`}
       >
         <div className="flex flex-col gap-3 w-full max-w-sm">
           <GlassInput placeholder="Type something..." />
