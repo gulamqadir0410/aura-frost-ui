@@ -1,0 +1,135 @@
+/*
+ * Glassic UI — CSS Tokens & Utility Classes
+ * Add this to your project's global CSS (e.g., index.css or globals.css)
+ * Import: @import 'glassic-ui/styles';
+ */
+
+@layer base {
+  :root {
+    /* Glass tokens — light mode */
+    --glass-bg: 220 20% 100%;
+    --glass-border: 220 20% 80%;
+    --glass-glow: 221 83% 53%;
+    --glass-shadow: 221 83% 53%;
+    --glass-noise: 0.02;
+
+    /* Gradient tokens */
+    --gradient-start: 221 83% 53%;
+    --gradient-mid: 262 83% 58%;
+    --gradient-end: 330 81% 60%;
+  }
+
+  .dark {
+    /* Glass tokens — dark mode */
+    --glass-bg: 220 30% 20%;
+    --glass-border: 220 20% 40%;
+    --glass-glow: 217 91% 60%;
+    --glass-shadow: 217 91% 60%;
+    --glass-noise: 0.03;
+
+    --gradient-start: 217 91% 60%;
+    --gradient-mid: 262 83% 58%;
+    --gradient-end: 330 81% 60%;
+  }
+}
+
+@layer components {
+  .glass-0 {
+    @apply bg-card/80 border border-border;
+  }
+
+  .glass-1 {
+    background: hsl(var(--glass-bg) / 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--glass-border) / 0.15);
+    box-shadow:
+      inset 0 1px 0 0 hsl(var(--glass-border) / 0.1),
+      0 4px 16px -2px hsl(var(--glass-shadow) / 0.08);
+  }
+
+  .glass-2 {
+    background: hsl(var(--glass-bg) / 0.35);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border) / 0.2);
+    box-shadow:
+      inset 0 1px 0 0 hsl(var(--glass-border) / 0.15),
+      0 8px 32px -4px hsl(var(--glass-shadow) / 0.12);
+  }
+
+  .glass-3 {
+    background: hsl(var(--glass-bg) / 0.25);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid hsl(var(--glass-border) / 0.25);
+    box-shadow:
+      inset 0 1px 0 0 hsl(var(--glass-border) / 0.2),
+      inset 0 0 20px 0 hsl(var(--glass-glow) / 0.03),
+      0 16px 48px -8px hsl(var(--glass-shadow) / 0.15);
+  }
+
+  .glass-float {
+    background: hsl(var(--glass-bg) / 0.15);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid hsl(var(--glass-border) / 0.3);
+    box-shadow:
+      inset 0 1px 0 0 hsl(var(--glass-border) / 0.25),
+      inset 0 0 30px 0 hsl(var(--glass-glow) / 0.05),
+      0 24px 64px -12px hsl(var(--glass-shadow) / 0.2),
+      0 0 0 1px hsl(var(--glass-border) / 0.05);
+  }
+
+  .glass-glow {
+    box-shadow:
+      0 0 20px -5px hsl(var(--glass-glow) / 0.3),
+      0 0 40px -10px hsl(var(--glass-glow) / 0.15);
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 12px 40px -8px hsl(var(--glass-shadow) / 0.2),
+      0 0 0 1px hsl(var(--glass-border) / 0.1);
+  }
+
+  .focus-glow:focus-within {
+    box-shadow:
+      0 0 0 2px hsl(var(--glass-glow) / 0.3),
+      0 0 20px -5px hsl(var(--glass-glow) / 0.2);
+  }
+
+  .gradient-bg {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--gradient-start) / 0.15),
+      hsl(var(--gradient-mid) / 0.1),
+      hsl(var(--gradient-end) / 0.08),
+      hsl(var(--gradient-start) / 0.12)
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  .gradient-bg-vivid {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--gradient-start)),
+      hsl(var(--gradient-mid)),
+      hsl(var(--gradient-end)),
+      hsl(var(--gradient-start))
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
