@@ -1,0 +1,80 @@
+{
+  "name": "glassic-ui",
+  "version": "1.0.0",
+  "description": "A production-ready glassmorphic component library built on React, Radix UI, and Tailwind CSS.",
+  "author": "Glassic UI",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./styles": "./dist/styles/glassic.css",
+    "./tailwind": "./dist/tailwind.config.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "registry",
+    "README.md"
+  ],
+  "bin": {
+    "glassic-ui": "./bin/cli.mjs"
+  },
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "npm run build",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "tailwindcss": ">=3.0.0"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-dropdown-menu": "^2.1.15",
+    "@radix-ui/react-switch": "^1.2.5",
+    "@radix-ui/react-tabs": "^1.1.12",
+    "@radix-ui/react-slot": "^1.2.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.34.3",
+    "lucide-react": "^0.462.0",
+    "recharts": "^2.15.4",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "glassmorphism",
+    "glass",
+    "components",
+    "tailwindcss",
+    "radix-ui",
+    "design-system"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "sideEffects": [
+    "*.css"
+  ]
+}

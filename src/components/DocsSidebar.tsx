@@ -31,11 +31,13 @@ import {
   Power,
   Inbox,
   BarChart3,
+  Package,
 } from "lucide-react";
 
 const gettingStarted = [
   { title: "Introduction", url: "/docs/introduction", icon: BookOpen },
   { title: "Installation", url: "/docs/installation", icon: Sparkles },
+  { title: "Publishing", url: "/docs/publishing", icon: Package },
 ];
 
 const theming = [

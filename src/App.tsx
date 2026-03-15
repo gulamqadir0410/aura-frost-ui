@@ -11,6 +11,7 @@ import { DocsLayout } from "./components/DocsLayout";
 // Docs pages
 import IntroductionPage from "./pages/docs/IntroductionPage";
 import InstallationPage from "./pages/docs/InstallationPage";
+import PublishingPage from "./pages/docs/PublishingPage";
 import GlassLayersPage from "./pages/docs/GlassLayersPage";
 import ColorsPage from "./pages/docs/ColorsPage";
 import AnimationsPage from "./pages/docs/AnimationsPage";
@@ -48,6 +49,7 @@ const App = () => (
             <Route path="/docs" element={<DocsLayout />}>
               <Route path="introduction" element={<IntroductionPage />} />
               <Route path="installation" element={<InstallationPage />} />
+              <Route path="publishing" element={<PublishingPage />} />
               <Route path="glass-layers" element={<GlassLayersPage />} />
               <Route path="colors" element={<ColorsPage />} />
               <Route path="animations" element={<AnimationsPage />} />

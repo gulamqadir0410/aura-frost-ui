@@ -1,0 +1,98 @@
+{
+  "components": {
+    "button": {
+      "name": "GlassButton",
+      "file": "GlassButton.tsx",
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority", "lucide-react"],
+      "description": "Glass-styled button with multiple variants and loading state."
+    },
+    "card": {
+      "name": "GlassCard",
+      "file": "GlassCard.tsx",
+      "dependencies": ["class-variance-authority"],
+      "description": "Glass card with elevation variants and hover-lift effect."
+    },
+    "input": {
+      "name": "GlassInput",
+      "file": "GlassInput.tsx",
+      "dependencies": [],
+      "description": "Glass-styled text input with focus glow."
+    },
+    "switch": {
+      "name": "GlassSwitch",
+      "file": "GlassSwitch.tsx",
+      "dependencies": ["@radix-ui/react-switch", "lucide-react"],
+      "description": "Glass toggle switch with loading state and label support."
+    },
+    "dialog": {
+      "name": "GlassDialog",
+      "file": "GlassDialog.tsx",
+      "dependencies": ["@radix-ui/react-dialog", "lucide-react"],
+      "description": "Glass modal dialog with overlay blur."
+    },
+    "dropdown": {
+      "name": "GlassDropdown",
+      "file": "GlassDropdown.tsx",
+      "dependencies": ["@radix-ui/react-dropdown-menu", "lucide-react"],
+      "description": "Glass dropdown menu with checkbox, radio, and sub-menu support."
+    },
+    "tabs": {
+      "name": "GlassTabs",
+      "file": "GlassTabs.tsx",
+      "dependencies": ["@radix-ui/react-tabs", "lucide-react", "framer-motion"],
+      "description": "Glass tabs with icons, badges, closable tabs, and vertical layout."
+    },
+    "navbar": {
+      "name": "GlassNavBar",
+      "file": "GlassNavBar.tsx",
+      "dependencies": ["lucide-react", "framer-motion"],
+      "description": "Responsive glass navigation bar with mobile menu and mega-menu."
+    },
+    "sidebar": {
+      "name": "GlassSidebar",
+      "file": "GlassSidebar.tsx",
+      "dependencies": ["lucide-react"],
+      "description": "Collapsible glass sidebar with nested groups and pin support."
+    },
+    "data-table": {
+      "name": "GlassDataTable",
+      "file": "GlassDataTable.tsx",
+      "dependencies": ["lucide-react"],
+      "description": "Feature-rich glass data table with sorting, pagination, and selection."
+    },
+    "chart": {
+      "name": "GlassChart",
+      "file": "GlassChart.tsx",
+      "dependencies": ["recharts"],
+      "description": "Glass-styled charts (Area, Bar, Line, Pie) with custom tooltips."
+    },
+    "command": {
+      "name": "GlassCommandPalette",
+      "file": "GlassCommandPalette.tsx",
+      "dependencies": ["lucide-react", "framer-motion"],
+      "description": "Cmd+K command palette with fuzzy search and keyboard navigation."
+    },
+    "notifications": {
+      "name": "GlassNotificationCenter",
+      "file": "GlassNotificationCenter.tsx",
+      "dependencies": ["lucide-react", "framer-motion"],
+      "description": "Notification center with categories, mark-read, and dismiss."
+    },
+    "segmented": {
+      "name": "GlassSegmentedControl",
+      "file": "GlassSegmentedControl.tsx",
+      "dependencies": ["framer-motion"],
+      "description": "Segmented control with animated indicator and multi-select."
+    },
+    "fab": {
+      "name": "GlassFAB",
+      "file": "GlassFAB.tsx",
+      "dependencies": ["lucide-react", "framer-motion"],
+      "description": "Floating action button with expandable radial actions."
+    }
+  },
+  "utils": {
+    "file": "utils.ts",
+    "dependencies": ["clsx", "tailwind-merge"]
+  }
+}
