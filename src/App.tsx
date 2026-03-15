@@ -11,6 +11,7 @@ import { DocsLayout } from "./components/DocsLayout";
 // Docs pages
 import IntroductionPage from "./pages/docs/IntroductionPage";
 import InstallationPage from "./pages/docs/InstallationPage";
+import PublishingPage from "./pages/docs/PublishingPage";
 import GlassLayersPage from "./pages/docs/GlassLayersPage";
 import ColorsPage from "./pages/docs/ColorsPage";
 import AnimationsPage from "./pages/docs/AnimationsPage";
