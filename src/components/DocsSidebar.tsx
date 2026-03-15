@@ -31,6 +31,7 @@ import {
   Power,
   Inbox,
   BarChart3,
+  Package,
 } from "lucide-react";
 
 const gettingStarted = [
