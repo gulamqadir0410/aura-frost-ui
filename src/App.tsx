@@ -49,6 +49,7 @@ const App = () => (
             <Route path="/docs" element={<DocsLayout />}>
               <Route path="introduction" element={<IntroductionPage />} />
               <Route path="installation" element={<InstallationPage />} />
+              <Route path="publishing" element={<PublishingPage />} />
               <Route path="glass-layers" element={<GlassLayersPage />} />
               <Route path="colors" element={<ColorsPage />} />
               <Route path="animations" element={<AnimationsPage />} />
