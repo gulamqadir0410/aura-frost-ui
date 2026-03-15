@@ -1,0 +1,59 @@
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "../utils";
+import { Loader2 } from "lucide-react";
+
+const glassButtonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  {
+    variants: {
+      variant: {
+        glass: "glass-1 text-foreground hover-lift focus-glow",
+        "glass-elevated": "glass-2 text-foreground hover-lift focus-glow",
+        "glass-float": "glass-float text-foreground hover-lift focus-glow glass-glow",
+        solid: "bg-primary text-primary-foreground hover:bg-primary/90",
+        outline: "glass-1 border-primary/20 text-primary hover:bg-primary/10",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        destructive: "glass-2 text-destructive border-destructive/20 hover:bg-destructive/10",
+      },
+      size: {
+        default: "h-10 px-5 py-2",
+        sm: "h-9 rounded-lg px-4 text-xs",
+        lg: "h-12 rounded-xl px-8 text-base",
+        icon: "h-10 w-10 rounded-xl",
+      },
+    },
+    defaultVariants: {
+      variant: "glass",
+      size: "default",
+    },
+  }
+);
+
+export interface GlassButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof glassButtonVariants> {
+  asChild?: boolean;
+  loading?: boolean;
+}
+
+const GlassButton = React.forwardRef<HTMLButtonElement, GlassButtonProps>(
+  ({ className, variant, size, asChild = false, loading, children, disabled, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+    return (
+      <Comp
+        className={cn(glassButtonVariants({ variant, size, className }))}
+        ref={ref}
+        disabled={disabled || loading}
+        {...props}
+      >
+        {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+        {children}
+      </Comp>
+    );
+  }
+);
+GlassButton.displayName = "GlassButton";
+
+export { GlassButton, glassButtonVariants };
