@@ -2,112 +2,214 @@ import { CodeBlock } from "@/components/CodeBlock";
 
 export default function InstallationPage() {
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-10 animate-fade-in">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight mb-2">Installation</h1>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">Installation Guide</h1>
         <p className="text-lg text-muted-foreground">
-          Get started with Glassic UI in your project.
+          Complete step-by-step guide — from a fresh React project to a working Glassic UI setup.
         </p>
       </div>
 
+      {/* Step 1 */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Prerequisites</h2>
+        <h2 className="text-xl font-semibold flex items-center gap-2">
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">1</span>
+          Create a New React + Vite Project
+        </h2>
         <p className="text-muted-foreground">
-          Glassic UI requires a project with:
-        </p>
-        <ul className="space-y-1 text-muted-foreground ml-4">
-          <li>• React 18+</li>
-          <li>• Tailwind CSS 3+</li>
-          <li>• TypeScript</li>
-        </ul>
-      </div>
-
-      {/* Option 1 */}
-      <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Option 1: CLI (Recommended — shadcn-style)</h2>
-        <p className="text-muted-foreground">
-          Initialize Glassic UI in your project. This sets up the glass CSS tokens, utility classes, and the <code className="font-mono text-sm bg-muted px-1.5 py-0.5 rounded">cn()</code> helper automatically.
+          Start by scaffolding a new React project with Vite and TypeScript:
         </p>
         <CodeBlock
           filename="terminal"
           language="bash"
-          code={`npx glassic-ui init`}
-        />
-        <p className="text-muted-foreground">
-          Then add components individually:
-        </p>
-        <CodeBlock
-          filename="terminal"
-          language="bash"
-          code={`npx glassic-ui add button card input dialog tabs`}
-        />
-        <p className="text-muted-foreground">
-          This copies the component source code directly into <code className="font-mono text-sm bg-muted px-1.5 py-0.5 rounded">src/components/glass/</code>, giving you full control and customization.
-        </p>
-        <p className="text-muted-foreground">
-          To see all available components:
-        </p>
-        <CodeBlock
-          filename="terminal"
-          language="bash"
-          code={`npx glassic-ui list`}
+          code={`npm create vite@latest my-app -- --template react-ts
+cd my-app
+npm install`}
         />
       </div>
 
-      {/* Option 2 */}
+      {/* Step 2 */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Option 2: Package Import</h2>
+        <h2 className="text-xl font-semibold flex items-center gap-2">
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">2</span>
+          Install Tailwind CSS
+        </h2>
         <p className="text-muted-foreground">
-          Install the package directly:
+          Glassic UI requires Tailwind CSS. Install it along with its peer dependencies:
         </p>
         <CodeBlock
           filename="terminal"
           language="bash"
-          code={`npm install glassic-ui`}
+          code={`npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p`}
         />
         <p className="text-muted-foreground">
-          Import the styles in your main CSS file:
+          Update <code className="font-mono text-sm bg-muted px-1.5 py-0.5 rounded">tailwind.config.js</code> to scan your source files:
         </p>
         <CodeBlock
-          filename="index.css"
+          filename="tailwind.config.js"
+          language="javascript"
+          code={`/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode: ["class"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}`}
+        />
+        <p className="text-muted-foreground">
+          Replace the contents of <code className="font-mono text-sm bg-muted px-1.5 py-0.5 rounded">src/index.css</code> with the Tailwind directives:
+        </p>
+        <CodeBlock
+          filename="src/index.css"
           language="css"
-          code={`@import 'glassic-ui/styles';`}
+          code={`@tailwind base;
+@tailwind components;
+@tailwind utilities;`}
         />
+      </div>
+
+      {/* Step 3 */}
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold flex items-center gap-2">
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">3</span>
+          Install Required Dependencies
+        </h2>
         <p className="text-muted-foreground">
-          Use components directly:
+          Glassic UI components use these libraries. Install them all at once:
         </p>
         <CodeBlock
-          filename="App.tsx"
-          language="tsx"
-          code={`import { GlassButton, GlassCard, GlassCardHeader, GlassCardTitle } from 'glassic-ui';
+          filename="terminal"
+          language="bash"
+          code={`npm install glassic-ui
 
-export function MyComponent() {
+# Required peer dependencies used by components
+npm install framer-motion lucide-react class-variance-authority clsx tailwind-merge tailwindcss-animate
+npm install @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-switch @radix-ui/react-tabs @radix-ui/react-slot
+
+# Only needed if using GlassChart
+npm install recharts`}
+        />
+      </div>
+
+      {/* Step 4 — Option A */}
+      <div className="space-y-6">
+        <h2 className="text-xl font-semibold flex items-center gap-2">
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">4</span>
+          Add Glassic UI Components
+        </h2>
+
+        <p className="text-muted-foreground font-medium">Choose one of the two methods below:</p>
+
+        {/* Option A */}
+        <div className="space-y-4 rounded-lg border border-border p-5">
+          <h3 className="text-lg font-semibold">Option A: CLI (Recommended — shadcn-style)</h3>
+          <p className="text-muted-foreground">
+            The CLI copies component source code into your project so you can fully customize them.
+          </p>
+          <p className="text-muted-foreground text-sm font-medium">
+            Step 4a — Initialize (creates glass CSS tokens, utility helper, and folder structure):
+          </p>
+          <CodeBlock
+            filename="terminal"
+            language="bash"
+            code={`npx glassic-ui init`}
+          />
+          <p className="text-muted-foreground text-sm">
+            This will create:
+          </p>
+          <ul className="space-y-1 text-muted-foreground text-sm ml-4">
+            <li>• <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">src/components/glass/</code> — component directory</li>
+            <li>• <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">src/lib/utils.ts</code> — the <code className="font-mono text-xs">cn()</code> class merge helper</li>
+            <li>• Glass CSS tokens appended to your <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">src/index.css</code></li>
+          </ul>
+
+          <p className="text-muted-foreground text-sm font-medium">
+            Step 4b — Add components (add one, several, or all):
+          </p>
+          <CodeBlock
+            filename="terminal"
+            language="bash"
+            code={`# Add specific components
+npx glassic-ui add button card input dialog tabs
+
+# Add ALL components at once
+npx glassic-ui add button card input switch dialog dropdown tabs navbar sidebar data-table chart command notifications segmented fab`}
+          />
+          <p className="text-muted-foreground text-sm font-medium">
+            Step 4c — See all available components:
+          </p>
+          <CodeBlock
+            filename="terminal"
+            language="bash"
+            code={`npx glassic-ui list`}
+          />
+        </div>
+
+        {/* Option B */}
+        <div className="space-y-4 rounded-lg border border-border p-5">
+          <h3 className="text-lg font-semibold">Option B: Direct Package Import</h3>
+          <p className="text-muted-foreground">
+            Import components directly from the <code className="font-mono text-sm bg-muted px-1.5 py-0.5 rounded">glassic-ui</code> package without copying source files.
+          </p>
+          <p className="text-muted-foreground text-sm font-medium">
+            Step 4a — Import the Glassic UI styles at the top of your CSS file:
+          </p>
+          <CodeBlock
+            filename="src/index.css"
+            language="css"
+            code={`@import 'glassic-ui/styles';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;`}
+          />
+          <p className="text-muted-foreground text-sm font-medium">
+            Step 4b — Use components directly:
+          </p>
+          <CodeBlock
+            filename="src/App.tsx"
+            language="tsx"
+            code={`import { GlassButton, GlassCard, GlassCardHeader, GlassCardTitle } from 'glassic-ui';
+
+export default function App() {
   return (
     <GlassCard variant="elevated" hover>
       <GlassCardHeader>
-        <GlassCardTitle>Hello World</GlassCardTitle>
+        <GlassCardTitle>Hello Glassic UI</GlassCardTitle>
       </GlassCardHeader>
       <GlassButton variant="glass-float">Click Me</GlassButton>
     </GlassCard>
   );
 }`}
-        />
+          />
+        </div>
       </div>
 
-      {/* Tailwind Config */}
+      {/* Step 5 */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Tailwind Configuration</h2>
+        <h2 className="text-xl font-semibold flex items-center gap-2">
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">5</span>
+          Configure Tailwind for Glass Tokens
+        </h2>
         <p className="text-muted-foreground">
-          Add the glass color tokens to your <code className="font-mono text-sm bg-muted px-1.5 py-0.5 rounded">tailwind.config.ts</code>:
+          Add the glass color tokens and the <code className="font-mono text-sm bg-muted px-1.5 py-0.5 rounded">tailwindcss-animate</code> plugin to your Tailwind config:
         </p>
         <CodeBlock
-          filename="tailwind.config.ts"
-          language="typescript"
-          code={`import type { Config } from "tailwindcss";
-
+          filename="tailwind.config.js"
+          language="javascript"
+          code={`/** @type {import('tailwindcss').Config} */
 export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   darkMode: ["class"],
-  content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -121,13 +223,80 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config;`}
+}`}
         />
       </div>
 
-      {/* Available Components */}
+      {/* Step 6 */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Available Components</h2>
+        <h2 className="text-xl font-semibold flex items-center gap-2">
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">6</span>
+          Run Your Project
+        </h2>
+        <CodeBlock
+          filename="terminal"
+          language="bash"
+          code={`npm run dev`}
+        />
+        <p className="text-muted-foreground">
+          Open <code className="font-mono text-sm bg-muted px-1.5 py-0.5 rounded">http://localhost:5173</code> and you should see your Glassic UI components rendering with the glassmorphic styling.
+        </p>
+      </div>
+
+      {/* Quick Example */}
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold flex items-center gap-2">
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold">✓</span>
+          Complete Working Example
+        </h2>
+        <p className="text-muted-foreground">
+          Here's a full <code className="font-mono text-sm bg-muted px-1.5 py-0.5 rounded">App.tsx</code> using CLI-installed components:
+        </p>
+        <CodeBlock
+          filename="src/App.tsx"
+          language="tsx"
+          code={`import { useState } from "react";
+import { GlassButton } from "./components/glass/GlassButton";
+import { GlassCard, GlassCardHeader, GlassCardTitle, GlassCardContent } from "./components/glass/GlassCard";
+import { GlassInput } from "./components/glass/GlassInput";
+import { GlassSwitch } from "./components/glass/GlassSwitch";
+
+export default function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  return (
+    <div className={darkMode ? "dark" : ""}>
+      <div className="min-h-screen bg-background text-foreground p-8 space-y-6">
+        <GlassCard variant="elevated" hover>
+          <GlassCardHeader>
+            <GlassCardTitle>Welcome to Glassic UI</GlassCardTitle>
+          </GlassCardHeader>
+          <GlassCardContent className="space-y-4">
+            <GlassInput placeholder="Enter your name..." />
+
+            <GlassSwitch
+              label="Dark Mode"
+              checked={darkMode}
+              onCheckedChange={setDarkMode}
+            />
+
+            <div className="flex gap-2">
+              <GlassButton variant="glass">Default</GlassButton>
+              <GlassButton variant="glass-float">Floating</GlassButton>
+              <GlassButton variant="glass-glow">Glowing</GlassButton>
+            </div>
+          </GlassCardContent>
+        </GlassCard>
+      </div>
+    </div>
+  );
+}`}
+        />
+      </div>
+
+      {/* Available Components Table */}
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold">All Available Components</h2>
         <div className="overflow-x-auto rounded-lg border border-border">
           <table className="w-full text-sm">
             <thead>
@@ -166,17 +335,23 @@ export default {
         </div>
       </div>
 
-      {/* Peer Dependencies */}
+      {/* Troubleshooting */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Peer Dependencies</h2>
-        <p className="text-muted-foreground">
-          These are required and must be installed in your project:
-        </p>
-        <CodeBlock
-          filename="terminal"
-          language="bash"
-          code={`npm install react react-dom tailwindcss`}
-        />
+        <h2 className="text-xl font-semibold">Troubleshooting</h2>
+        <div className="space-y-3">
+          <div>
+            <p className="font-medium text-foreground">Glass effects not showing?</p>
+            <p className="text-muted-foreground text-sm">Make sure the CSS variables (<code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">--glass-bg</code>, <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">--glass-border</code>, etc.) are defined in your CSS. Run <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">npx glassic-ui init</code> to auto-inject them.</p>
+          </div>
+          <div>
+            <p className="font-medium text-foreground">Tailwind classes not working on glass components?</p>
+            <p className="text-muted-foreground text-sm">Ensure your <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">tailwind.config.js</code> content array includes <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">./src/**/*.{"{js,ts,jsx,tsx}"}</code>.</p>
+          </div>
+          <div>
+            <p className="font-medium text-foreground">cn() not found?</p>
+            <p className="text-muted-foreground text-sm">Run <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">npx glassic-ui init</code> — it creates <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">src/lib/utils.ts</code> with the cn() helper automatically.</p>
+          </div>
+        </div>
       </div>
     </div>
   );
