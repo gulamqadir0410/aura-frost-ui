@@ -25,24 +25,12 @@ export default function PublishingPage() {
 │   ├── components/           # All 15 glass components
 │   │   ├── GlassButton.tsx
 │   │   ├── GlassCard.tsx
-│   │   ├── GlassInput.tsx
-│   │   ├── GlassSwitch.tsx
-│   │   ├── GlassDialog.tsx
-│   │   ├── GlassDropdown.tsx
-│   │   ├── GlassTabs.tsx
-│   │   ├── GlassNavBar.tsx
-│   │   ├── GlassSidebar.tsx
-│   │   ├── GlassDataTable.tsx
-│   │   ├── GlassChart.tsx
-│   │   ├── GlassCommandPalette.tsx
-│   │   ├── GlassNotificationCenter.tsx
-│   │   ├── GlassSegmentedControl.tsx
-│   │   └── GlassFAB.tsx
+│   │   └── ...
 │   ├── styles/
 │   │   └── glassic.css       # Glass CSS tokens & utilities
 │   ├── index.ts              # Barrel exports
 │   ├── utils.ts              # cn() utility
-│   └── tailwind.config.js    # Tailwind preset
+│   └── tailwind.config.js    # Tailwind preset (v3 compat)
 ├── registry.json             # Component registry for CLI
 ├── package.json
 ├── tsconfig.json
@@ -79,15 +67,9 @@ npm run build`}
         <CodeBlock
           filename="terminal"
           language="bash"
-          code={`# Login to npm (first time only)
-npm login
-
-# Publish the package
+          code={`npm login
 cd packages/glassic-ui
-npm publish
-
-# Or publish with a specific tag
-npm publish --tag beta`}
+npm publish`}
         />
       </div>
 
@@ -99,18 +81,10 @@ npm publish --tag beta`}
         <CodeBlock
           filename="terminal"
           language="bash"
-          code={`# Initialize (sets up CSS tokens + utils)
-npx glassic-ui init
-
-# Add specific components
+          code={`npx glassic-ui init
 npx glassic-ui add button card input dialog
-
-# List all available components
 npx glassic-ui list`}
         />
-        <p className="text-muted-foreground">
-          This approach gives users full control over the component source code, just like shadcn/ui.
-        </p>
       </div>
 
       <div className="space-y-4">
@@ -127,8 +101,6 @@ npx glassic-ui list`}
           filename="App.tsx"
           language="tsx"
           code={`import { GlassButton, GlassCard, GlassCardHeader, GlassCardTitle, GlassCardContent } from "glassic-ui";
-
-// Import glass CSS tokens
 import "glassic-ui/styles";
 
 export default function App() {
@@ -149,20 +121,32 @@ export default function App() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold">5. Tailwind Configuration</h2>
+        <h2 className="text-xl font-semibold">5. Consumer Tailwind Setup</h2>
         <p className="text-muted-foreground">
-          Users must add the glass color tokens to their Tailwind config:
+          Users on <strong>Tailwind v4</strong> add glass tokens via <code className="font-mono text-sm bg-muted px-1.5 py-0.5 rounded">@theme</code> in their CSS:
         </p>
         <CodeBlock
-          filename="tailwind.config.ts"
-          language="typescript"
-          code={`import type { Config } from "tailwindcss";
+          filename="src/index.css (Tailwind v4)"
+          language="css"
+          code={`@import "tailwindcss";
 
-export default {
+@theme {
+  --color-glass-bg: hsl(var(--glass-bg));
+  --color-glass-border: hsl(var(--glass-border));
+  --color-glass-glow: hsl(var(--glass-glow));
+  --color-glass-shadow: hsl(var(--glass-shadow));
+}`}
+        />
+        <p className="text-muted-foreground">
+          Users on <strong>Tailwind v3</strong> add tokens in their <code className="font-mono text-sm bg-muted px-1.5 py-0.5 rounded">tailwind.config.js</code> instead:
+        </p>
+        <CodeBlock
+          filename="tailwind.config.js (Tailwind v3)"
+          language="javascript"
+          code={`export default {
   darkMode: ["class"],
   content: [
     "./src/**/*.{ts,tsx}",
-    // Include Glassic UI components in content scanning
     "./node_modules/glassic-ui/dist/**/*.{js,mjs}",
   ],
   theme: {
@@ -178,7 +162,7 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config;`}
+}`}
         />
       </div>
 
@@ -228,7 +212,7 @@ export default {
           </li>
           <li className="flex items-start gap-2">
             <span className="text-primary mt-0.5">✓</span>
-            README includes usage instructions
+            README includes usage instructions for both v3 and v4
           </li>
         </ul>
       </div>
