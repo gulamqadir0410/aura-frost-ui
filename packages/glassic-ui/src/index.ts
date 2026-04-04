@@ -74,3 +74,6 @@ export { GlassNotificationCenter } from "./components/GlassNotificationCenter";
 export { GlassSegmentedControl } from "./components/GlassSegmentedControl";
 
 export { GlassFAB } from "./components/GlassFAB";
+
+export { GlassAlert, glassAlertVariants } from "./components/GlassAlert";
+export type { GlassAlertProps } from "./components/GlassAlert";

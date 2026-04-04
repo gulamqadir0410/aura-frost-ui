@@ -21,18 +21,18 @@ export function CodeBlock({ code, language = "tsx", filename, className }: CodeB
   return (
     <div className={cn("relative group rounded-lg border border-border overflow-hidden", className)}>
       {filename && (
-        <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-muted/50">
-          <span className="text-xs font-mono text-muted-foreground">{filename}</span>
-          <span className="text-xs text-muted-foreground">{language}</span>
+        <div className="flex items-center justify-between px-3 sm:px-4 py-2 border-b border-border bg-muted/50">
+          <span className="text-xs font-mono text-muted-foreground truncate">{filename}</span>
+          <span className="text-xs text-muted-foreground ml-2 shrink-0">{language}</span>
         </div>
       )}
       <div className="relative">
-        <pre className="p-4 overflow-x-auto text-sm leading-relaxed">
+        <pre className="p-3 sm:p-4 overflow-x-auto text-xs sm:text-sm leading-relaxed">
           <code className="font-mono text-foreground/90">{code}</code>
         </pre>
         <button
           onClick={handleCopy}
-          className="absolute top-3 right-3 p-2 rounded-md glass-1 opacity-0 group-hover:opacity-100 transition-opacity"
+          className="absolute top-2 right-2 sm:top-3 sm:right-3 p-1.5 sm:p-2 rounded-md glass-1 opacity-0 group-hover:opacity-100 transition-opacity"
         >
           {copied ? (
             <Check className="h-3.5 w-3.5 text-green-500" />

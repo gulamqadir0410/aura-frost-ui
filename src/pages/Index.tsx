@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { motion } from "framer-motion";
-import { ArrowRight, Gem, Github, Sparkles, Layers, Zap, Search, Bell, User, TrendingUp, TrendingDown, ChevronRight } from "lucide-react";
+import { ArrowRight, Gem, Github, Sparkles, Layers, Zap, Search, Bell, User, TrendingUp, TrendingDown, ChevronRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GlassButton } from "@/components/glass/GlassButton";
 import { GlassCard } from "@/components/glass/GlassCard";
@@ -11,14 +11,6 @@ import { GlassSwitch } from "@/components/glass/GlassSwitch";
 import { GlassSegmentedControl } from "@/components/glass/GlassSegmentedControl";
 import { GlassChart } from "@/components/glass/GlassChart";
 import { useState } from "react";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1, y: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" },
-  }),
-};
 
 const showcaseTabs = [
   { value: "examples", label: "Examples" },
@@ -33,8 +25,17 @@ const statsData = [
   { label: "Growth Rate", value: "4.5%", change: "+4.5%", trend: "up" as const, desc: "Steady performance" },
 ];
 
+const navLinks = [
+  { label: "Docs", to: "/docs/introduction" },
+  { label: "Components", to: "/docs/components/button" },
+  { label: "Charts", to: "/docs/components/chart" },
+  { label: "Themes", to: "/docs/colors" },
+  { label: "Crypto Demo", to: "/examples/crypto-tracker" },
+];
+
 export default function Index() {
   const [activeTab, setActiveTab] = useState("examples");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -44,20 +45,14 @@ export default function Index() {
 
       {/* Header */}
       <header className="relative z-50 glass-1 border-b border-border">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-14">
-          <div className="flex items-center gap-6">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 h-14">
+          <div className="flex items-center gap-4 sm:gap-6">
             <Link to="/" className="flex items-center gap-2">
               <Gem className="h-5 w-5 text-primary" />
               <span className="font-bold">Glassic UI</span>
             </Link>
             <nav className="hidden md:flex items-center gap-1">
-              {[
-                { label: "Docs", to: "/docs/introduction" },
-                { label: "Components", to: "/docs/components/button" },
-                { label: "Charts", to: "/docs/components/chart" },
-                { label: "Themes", to: "/docs/colors" },
-                { label: "Crypto Demo", to: "/examples/crypto-tracker" },
-              ].map((item) => (
+              {navLinks.map((item) => (
                 <Link
                   key={item.label}
                   to={item.to}
@@ -69,7 +64,7 @@ export default function Index() {
             </nav>
           </div>
           <div className="flex items-center gap-2">
-            <div className="hidden sm:flex items-center glass-1 rounded-lg px-3 py-1.5 text-sm text-muted-foreground gap-2 w-48">
+            <div className="hidden lg:flex items-center glass-1 rounded-lg px-3 py-1.5 text-sm text-muted-foreground gap-2 w-48">
               <Search className="h-3.5 w-3.5" />
               <span>Search docs…</span>
             </div>
@@ -79,15 +74,41 @@ export default function Index() {
               </Button>
             </a>
             <ThemeToggle />
+            <button
+              className="md:hidden p-2 rounded-md hover:bg-accent transition-colors"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
         </div>
+        {/* Mobile nav */}
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden border-t border-border glass-2 px-4 py-3 space-y-1"
+          >
+            {navLinks.map((item) => (
+              <Link
+                key={item.label}
+                to={item.to}
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </motion.div>
+        )}
       </header>
 
       {/* Hero */}
       <div className="relative z-10">
-        <div className="max-w-5xl mx-auto px-6 pt-20 pb-12 text-center">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-12 sm:pt-20 pb-8 sm:pb-12 text-center">
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-2 mb-8 text-sm font-medium cursor-pointer hover:glass-glow transition-all"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-2 mb-6 sm:mb-8 text-xs sm:text-sm font-medium cursor-pointer hover:glass-glow transition-all"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
@@ -98,7 +119,7 @@ export default function Index() {
           </motion.div>
 
           <motion.h1
-            className="text-5xl sm:text-7xl font-bold tracking-tight mb-6 leading-[1.1]"
+            className="text-3xl sm:text-5xl lg:text-7xl font-bold tracking-tight mb-4 sm:mb-6 leading-[1.1]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -109,7 +130,7 @@ export default function Index() {
           </motion.h1>
 
           <motion.p
-            className="text-lg text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed"
+            className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
@@ -119,18 +140,18 @@ export default function Index() {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-3 justify-center"
+            className="flex flex-col sm:flex-row gap-3 justify-center px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
             <Link to="/docs/introduction">
-              <GlassButton size="lg" className="px-8 gap-2 font-semibold">
+              <GlassButton size="lg" className="w-full sm:w-auto px-8 gap-2 font-semibold">
                 Get Started
               </GlassButton>
             </Link>
             <Link to="/docs/components/button">
-              <Button variant="ghost" size="lg" className="px-8 gap-2 text-muted-foreground hover:text-foreground">
+              <Button variant="ghost" size="lg" className="w-full sm:w-auto px-8 gap-2 text-muted-foreground hover:text-foreground">
                 View Components
               </Button>
             </Link>
@@ -139,19 +160,19 @@ export default function Index() {
 
         {/* Showcase section */}
         <motion.div
-          className="max-w-6xl mx-auto px-6 pb-20"
+          className="max-w-6xl mx-auto px-4 sm:px-6 pb-12 sm:pb-20"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.7 }}
         >
           {/* Tab bar */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-start mb-4 sm:mb-6 overflow-x-auto">
             <div className="flex items-center gap-1">
               {showcaseTabs.map((tab) => (
                 <button
                   key={tab.value}
                   onClick={() => setActiveTab(tab.value)}
-                  className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                  className={`px-3 sm:px-4 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap ${
                     activeTab === tab.value
                       ? "text-foreground"
                       : "text-muted-foreground hover:text-foreground"
@@ -170,7 +191,7 @@ export default function Index() {
           {activeTab === "examples" && (
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
               {/* Payment card */}
-              <div className="md:col-span-4 glass-2 rounded-xl border border-border p-6">
+              <div className="md:col-span-4 glass-2 rounded-xl border border-border p-4 sm:p-6">
                 <h3 className="font-semibold mb-1">Payment Method</h3>
                 <p className="text-xs text-muted-foreground mb-4">All transactions are secure and encrypted</p>
                 <div className="space-y-3">
@@ -178,8 +199,8 @@ export default function Index() {
                     <label className="text-xs font-medium mb-1.5 block">Name on Card</label>
                     <GlassInput placeholder="John Doe" />
                   </div>
-                  <div className="grid grid-cols-3 gap-2">
-                    <div className="col-span-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    <div className="sm:col-span-2">
                       <label className="text-xs font-medium mb-1.5 block">Card Number</label>
                       <GlassInput placeholder="1234 5678 9012 3456" />
                     </div>
@@ -192,7 +213,7 @@ export default function Index() {
               </div>
 
               {/* Team card */}
-              <div className="md:col-span-4 glass-2 rounded-xl border border-border p-6 flex flex-col items-center justify-center text-center">
+              <div className="md:col-span-4 glass-2 rounded-xl border border-border p-4 sm:p-6 flex flex-col items-center justify-center text-center">
                 <div className="flex -space-x-2 mb-3">
                   {[0, 1, 2].map((i) => (
                     <div key={i} className="h-10 w-10 rounded-full bg-muted border-2 border-background flex items-center justify-center">
@@ -206,24 +227,24 @@ export default function Index() {
               </div>
 
               {/* Settings card */}
-              <div className="md:col-span-4 glass-2 rounded-xl border border-border p-6 space-y-4">
+              <div className="md:col-span-4 glass-2 rounded-xl border border-border p-4 sm:p-6 space-y-4">
                 <div className="glass-1 rounded-lg px-3 py-2 flex items-center gap-2 text-sm">
                   <div className="h-4 w-4 rounded-full bg-muted" />
-                  <span className="text-muted-foreground">https://</span>
+                  <span className="text-muted-foreground truncate">https://</span>
                 </div>
                 <div className="glass-1 rounded-lg p-3 space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm">Two-factor authentication</span>
-                    <GlassButton size="sm" variant="glass">Enable</GlassButton>
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-sm truncate">Two-factor authentication</span>
+                    <GlassButton size="sm" variant="glass" className="shrink-0">Enable</GlassButton>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
                         <Sparkles className="h-3 w-3 text-primary" />
                       </div>
-                      <span className="text-sm">Profile verified</span>
+                      <span className="text-sm truncate">Profile verified</span>
                     </div>
-                    <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                    <ChevronRight className="h-4 w-4 text-muted-foreground shrink-0" />
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -239,7 +260,7 @@ export default function Index() {
               {/* Stats row */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {statsData.map((stat) => (
-                  <div key={stat.label} className="glass-2 rounded-xl border border-border p-5">
+                  <div key={stat.label} className="glass-2 rounded-xl border border-border p-4 sm:p-5">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xs text-muted-foreground">{stat.label}</span>
                       <span className={`text-xs font-medium flex items-center gap-0.5 ${stat.trend === "up" ? "text-primary" : "text-destructive"}`}>
@@ -247,7 +268,7 @@ export default function Index() {
                         {stat.change}
                       </span>
                     </div>
-                    <div className="text-2xl font-bold mb-1">{stat.value}</div>
+                    <div className="text-xl sm:text-2xl font-bold mb-1">{stat.value}</div>
                     <p className="text-xs text-muted-foreground">{stat.desc}</p>
                   </div>
                 ))}
@@ -261,9 +282,9 @@ export default function Index() {
           )}
 
           {activeTab === "playground" && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               {/* Buttons */}
-              <div className="glass-2 rounded-xl border border-border p-6 space-y-4">
+              <div className="glass-2 rounded-xl border border-border p-4 sm:p-6 space-y-4">
                 <h3 className="font-semibold text-sm">Buttons</h3>
                 <div className="flex flex-wrap gap-2">
                   <GlassButton>Default</GlassButton>
@@ -275,7 +296,7 @@ export default function Index() {
               </div>
 
               {/* Segmented + Switch */}
-              <div className="glass-2 rounded-xl border border-border p-6 space-y-4">
+              <div className="glass-2 rounded-xl border border-border p-4 sm:p-6 space-y-4">
                 <h3 className="font-semibold text-sm">Controls</h3>
                 <GlassSegmentedControl
                   segments={[
@@ -284,14 +305,14 @@ export default function Index() {
                     { value: "reports", label: "Reports" },
                   ]}
                 />
-                <div className="flex items-center gap-3">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
                   <GlassSwitch label="Dark mode" />
                   <GlassSwitch label="Notifications" defaultChecked />
                 </div>
               </div>
 
               {/* Inputs */}
-              <div className="glass-2 rounded-xl border border-border p-6 space-y-4">
+              <div className="glass-2 rounded-xl border border-border p-4 sm:p-6 space-y-4">
                 <h3 className="font-semibold text-sm">Inputs</h3>
                 <GlassInput placeholder="Search components…" />
                 <GlassInput placeholder="Enter your email" type="email" />

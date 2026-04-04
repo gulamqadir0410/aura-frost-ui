@@ -24,6 +24,7 @@ import DialogPage from "./pages/docs/components/DialogPage";
 import TabsPage from "./pages/docs/components/TabsPage";
 import SwitchPage from "./pages/docs/components/SwitchPage";
 import ToastPage from "./pages/docs/components/ToastPage";
+import AlertPage from "./pages/docs/components/AlertPage";
 import NavBarPage from "./pages/docs/components/NavBarPage";
 import SidebarPage from "./pages/docs/components/SidebarPage";
 import DropdownPage from "./pages/docs/components/DropdownPage";
@@ -59,6 +60,7 @@ const App = () => (
               <Route path="components/dialog" element={<DialogPage />} />
               <Route path="components/tabs" element={<TabsPage />} />
               <Route path="components/switch" element={<SwitchPage />} />
+              <Route path="components/alert" element={<AlertPage />} />
               <Route path="components/toast" element={<ToastPage />} />
               <Route path="components/navbar" element={<NavBarPage />} />
               <Route path="components/sidebar" element={<SidebarPage />} />
