@@ -24,6 +24,7 @@ import DialogPage from "./pages/docs/components/DialogPage";
 import TabsPage from "./pages/docs/components/TabsPage";
 import SwitchPage from "./pages/docs/components/SwitchPage";
 import ToastPage from "./pages/docs/components/ToastPage";
+import AlertPage from "./pages/docs/components/AlertPage";
 import NavBarPage from "./pages/docs/components/NavBarPage";
 import SidebarPage from "./pages/docs/components/SidebarPage";
 import DropdownPage from "./pages/docs/components/DropdownPage";
