@@ -169,7 +169,7 @@ export default function App() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Package Exports</h2>
         <p className="text-muted-foreground">
-          The package exports all 15 components, their types, and the <code className="font-mono text-sm bg-muted px-1.5 py-0.5 rounded">cn()</code> utility:
+          The package exports all 16 components, their types, and the <code className="font-mono text-sm bg-muted px-1.5 py-0.5 rounded">cn()</code> utility:
         </p>
         <CodeBlock
           filename="package.json (exports)"
