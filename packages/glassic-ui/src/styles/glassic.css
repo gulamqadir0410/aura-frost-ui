@@ -2,6 +2,9 @@
  * Glassic UI — CSS Tokens & Utility Classes
  * Add this to your project's global CSS (e.g., index.css or globals.css)
  * Import: @import 'glassic-ui/styles';
+ *
+ * Compatible with both Tailwind CSS v3 (@layer components) and v4 (@utility).
+ * If using v4, convert the @layer blocks below to @utility syntax.
  */
 
 @layer base {
@@ -35,7 +38,8 @@
 
 @layer components {
   .glass-0 {
-    @apply bg-card/80 border border-border;
+    background-color: hsl(var(--card, 220 20% 98%) / 0.8);
+    border: 1px solid hsl(var(--border, 214 32% 91%));
   }
 
   .glass-1 {
@@ -88,7 +92,7 @@
   }
 
   .hover-lift {
-    @apply transition-all duration-300 ease-out;
+    transition: all 0.3s ease-out;
   }
   .hover-lift:hover {
     transform: translateY(-2px);
