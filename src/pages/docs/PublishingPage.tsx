@@ -192,7 +192,7 @@ export default function App() {
         <ul className="space-y-2 text-sm text-muted-foreground">
           <li className="flex items-start gap-2">
             <span className="text-primary mt-0.5">✓</span>
-            All 15 components export correctly from <code className="font-mono text-xs bg-muted px-1 py-0.5 rounded">src/index.ts</code>
+            All 16 components export correctly from <code className="font-mono text-xs bg-muted px-1 py-0.5 rounded">src/index.ts</code>
           </li>
           <li className="flex items-start gap-2">
             <span className="text-primary mt-0.5">✓</span>
