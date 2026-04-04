@@ -60,6 +60,7 @@ const App = () => (
               <Route path="components/dialog" element={<DialogPage />} />
               <Route path="components/tabs" element={<TabsPage />} />
               <Route path="components/switch" element={<SwitchPage />} />
+              <Route path="components/alert" element={<AlertPage />} />
               <Route path="components/toast" element={<ToastPage />} />
               <Route path="components/navbar" element={<NavBarPage />} />
               <Route path="components/sidebar" element={<SidebarPage />} />

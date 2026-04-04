@@ -51,6 +51,7 @@ const coreComponents = [
   { title: "Card", url: "/docs/components/card", icon: CreditCard },
   { title: "Input", url: "/docs/components/input", icon: TextCursorInput },
   { title: "Dialog", url: "/docs/components/dialog", icon: PanelTop },
+  { title: "Alert", url: "/docs/components/alert", icon: Bell },
   { title: "Toast", url: "/docs/components/toast", icon: Bell },
 ];
 
