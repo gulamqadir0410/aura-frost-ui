@@ -24,6 +24,12 @@
       "dependencies": ["@radix-ui/react-switch", "lucide-react"],
       "description": "Glass toggle switch with loading state and label support."
     },
+    "alert": {
+      "name": "GlassAlert",
+      "file": "GlassAlert.tsx",
+      "dependencies": ["class-variance-authority", "lucide-react"],
+      "description": "Glass alert banner with info, success, warning, error variants."
+    },
     "dialog": {
       "name": "GlassDialog",
       "file": "GlassDialog.tsx",
