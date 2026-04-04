@@ -334,6 +334,7 @@ export default function App() {
                 ["GlassCard", "card", "Card with elevation variants and hover-lift"],
                 ["GlassInput", "input", "Text input with focus glow"],
                 ["GlassSwitch", "switch", "Toggle switch with loading and label support"],
+                ["GlassAlert", "alert", "Alert banner with info/success/warning/error"],
                 ["GlassDialog", "dialog", "Modal dialog with overlay blur"],
                 ["GlassDropdown", "dropdown", "Dropdown menu with checkbox/radio/sub-menu"],
                 ["GlassTabs", "tabs", "Tabs with icons, badges, closable, vertical"],
