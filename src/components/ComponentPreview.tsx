@@ -13,7 +13,7 @@ export function ComponentPreview({ children, code, className }: ComponentPreview
 
   return (
     <div className={cn("rounded-xl border border-border overflow-hidden", className)}>
-      <div className="flex items-center gap-1 px-4 py-2 border-b border-border bg-muted/30">
+      <div className="flex items-center gap-1 px-3 sm:px-4 py-2 border-b border-border bg-muted/30">
         <button
           onClick={() => setView("preview")}
           className={cn(
@@ -38,8 +38,8 @@ export function ComponentPreview({ children, code, className }: ComponentPreview
         </button>
       </div>
       {view === "preview" ? (
-        <div className="p-8 flex items-center justify-center min-h-[200px] gradient-bg">
-          {children}
+        <div className="p-4 sm:p-8 flex items-center justify-center min-h-[200px] gradient-bg overflow-x-auto">
+          <div className="w-full">{children}</div>
         </div>
       ) : (
         <CodeBlock code={code} />
