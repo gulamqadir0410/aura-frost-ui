@@ -135,10 +135,10 @@ npm install recharts`}
             filename="terminal"
             language="bash"
             code={`# Add specific components
-npx glassic-ui add button card input dialog tabs
+npx glassic-ui add button card input dialog alert tabs
 
 # Add ALL components at once
-npx glassic-ui add button card input switch dialog dropdown tabs navbar sidebar data-table chart command notifications segmented fab`}
+npx glassic-ui add button card input switch alert dialog dropdown tabs navbar sidebar data-table chart command notifications segmented fab`}
           />
           <p className="text-muted-foreground text-sm font-medium">
             Step 4c — See all available components:
