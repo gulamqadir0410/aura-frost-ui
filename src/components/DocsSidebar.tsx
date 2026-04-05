@@ -32,6 +32,7 @@ import {
   Inbox,
   BarChart3,
   Package,
+  Moon,
 } from "lucide-react";
 
 const gettingStarted = [

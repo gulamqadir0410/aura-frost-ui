@@ -15,6 +15,7 @@ import PublishingPage from "./pages/docs/PublishingPage";
 import GlassLayersPage from "./pages/docs/GlassLayersPage";
 import ColorsPage from "./pages/docs/ColorsPage";
 import AnimationsPage from "./pages/docs/AnimationsPage";
+import DarkModePage from "./pages/docs/DarkModePage";
 
 // Component pages
 import ButtonPage from "./pages/docs/components/ButtonPage";
