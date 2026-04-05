@@ -302,10 +302,10 @@ export default function App() {
               onCheckedChange={setDarkMode}
             />
 
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <GlassButton variant="glass">Default</GlassButton>
               <GlassButton variant="glass-float">Floating</GlassButton>
-              <GlassButton variant="glass-glow">Glowing</GlassButton>
+              <GlassButton variant="solid">Solid</GlassButton>
             </div>
           </GlassCardContent>
         </GlassCard>
