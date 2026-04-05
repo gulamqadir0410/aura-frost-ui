@@ -45,6 +45,7 @@ const theming = [
   { title: "Glass Layers", url: "/docs/glass-layers", icon: Layers },
   { title: "Colors", url: "/docs/colors", icon: Palette },
   { title: "Animations", url: "/docs/animations", icon: Sparkles },
+  { title: "Dark Mode", url: "/docs/dark-mode", icon: Moon },
 ];
 
 const coreComponents = [

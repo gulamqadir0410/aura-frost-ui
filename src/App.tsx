@@ -55,6 +55,7 @@ const App = () => (
               <Route path="glass-layers" element={<GlassLayersPage />} />
               <Route path="colors" element={<ColorsPage />} />
               <Route path="animations" element={<AnimationsPage />} />
+              <Route path="dark-mode" element={<DarkModePage />} />
               <Route path="components/button" element={<ButtonPage />} />
               <Route path="components/card" element={<CardPage />} />
               <Route path="components/input" element={<InputPage />} />
