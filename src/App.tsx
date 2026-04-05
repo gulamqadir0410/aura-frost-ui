@@ -15,6 +15,7 @@ import PublishingPage from "./pages/docs/PublishingPage";
 import GlassLayersPage from "./pages/docs/GlassLayersPage";
 import ColorsPage from "./pages/docs/ColorsPage";
 import AnimationsPage from "./pages/docs/AnimationsPage";
+import DarkModePage from "./pages/docs/DarkModePage";
 
 // Component pages
 import ButtonPage from "./pages/docs/components/ButtonPage";
@@ -54,6 +55,7 @@ const App = () => (
               <Route path="glass-layers" element={<GlassLayersPage />} />
               <Route path="colors" element={<ColorsPage />} />
               <Route path="animations" element={<AnimationsPage />} />
+              <Route path="dark-mode" element={<DarkModePage />} />
               <Route path="components/button" element={<ButtonPage />} />
               <Route path="components/card" element={<CardPage />} />
               <Route path="components/input" element={<InputPage />} />
