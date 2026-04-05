@@ -319,7 +319,8 @@ export default function App() {
       {/* Available Components Table */}
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">All Available Components</h2>
-        <div className="overflow-x-auto rounded-lg border border-border">
+        {/* Desktop table */}
+        <div className="hidden md:block overflow-x-auto rounded-lg border border-border">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-border bg-muted/50">
@@ -355,6 +356,35 @@ export default function App() {
               ))}
             </tbody>
           </table>
+        </div>
+        {/* Mobile cards */}
+        <div className="md:hidden space-y-2">
+          {[
+            ["GlassButton", "button", "Button with glass variants and loading state"],
+            ["GlassCard", "card", "Card with elevation variants and hover-lift"],
+            ["GlassInput", "input", "Text input with focus glow"],
+            ["GlassSwitch", "switch", "Toggle switch with loading and label support"],
+            ["GlassAlert", "alert", "Alert banner with info/success/warning/error"],
+            ["GlassDialog", "dialog", "Modal dialog with overlay blur"],
+            ["GlassDropdown", "dropdown", "Dropdown menu with checkbox/radio/sub-menu"],
+            ["GlassTabs", "tabs", "Tabs with icons, badges, closable, vertical"],
+            ["GlassNavBar", "navbar", "Responsive nav bar with mobile + mega-menu"],
+            ["GlassSidebar", "sidebar", "Collapsible sidebar with nested groups"],
+            ["GlassDataTable", "data-table", "Data table with sort, pagination, selection"],
+            ["GlassChart", "chart", "Charts (Area, Bar, Line, Pie)"],
+            ["GlassCommandPalette", "command", "Cmd+K command palette with fuzzy search"],
+            ["GlassNotificationCenter", "notifications", "Notification center with categories"],
+            ["GlassSegmentedControl", "segmented", "Segmented control with animated indicator"],
+            ["GlassFAB", "fab", "Floating action button with radial actions"],
+          ].map(([component, cli, desc]) => (
+            <div key={cli} className="rounded-lg border border-border p-3 space-y-1">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-xs text-foreground font-medium">{component}</span>
+                <code className="bg-muted px-1.5 py-0.5 rounded text-xs">{cli}</code>
+              </div>
+              <p className="text-xs text-muted-foreground">{desc}</p>
+            </div>
+          ))}
         </div>
       </div>
 
