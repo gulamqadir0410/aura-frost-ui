@@ -2,42 +2,38 @@
 
 A production-ready glassmorphic component library built on React, Radix UI, and Tailwind CSS.
 
-## Installation
+[![npm version](https://img.shields.io/npm/v/glassic-ui.svg)](https://www.npmjs.com/package/glassic-ui)
+[![license](https://img.shields.io/npm/l/glassic-ui.svg)](https://github.com/gulamqadir0410/aura-frost-ui/blob/main/LICENSE)
+
+## Features
+
+- 🪟 **16 glassmorphic components** — Button, Card, Input, Dialog, Tabs, NavBar, and more
+- 🎨 **CSS-first design tokens** — Works with Tailwind v3 and v4
+- 🌗 **Dark mode** — Full light/dark support out of the box
+- ♿ **Accessible** — Built on Radix UI primitives with ARIA support
+- 📦 **Tree-shakeable** — Import only what you need
+- 🔧 **Two install modes** — CLI (copy source) or package import
+
+## Quick Start
 
 ### Option 1: CLI (Recommended — shadcn-style)
 
-Initialize Glassic UI in your project:
-
 ```bash
 npx glassic-ui init
-```
-
-Then add components individually:
-
-```bash
 npx glassic-ui add button card input dialog tabs
 ```
 
-This copies the component source code directly into your project, giving you full control and customization.
+This copies component source files directly into your project for full customization.
 
 ### Option 2: Package Import
-
-Install the package:
 
 ```bash
 npm install glassic-ui
 ```
 
-Import the styles in your main CSS:
-
-```css
-@import 'glassic-ui/styles';
-```
-
-Use components:
-
 ```tsx
 import { GlassButton, GlassCard, GlassCardHeader, GlassCardTitle } from 'glassic-ui';
+import 'glassic-ui/styles';
 
 export function MyComponent() {
   return (
@@ -51,50 +47,32 @@ export function MyComponent() {
 }
 ```
 
-## Available Components
+## Tailwind Setup
 
-| Component | CLI Name | Description |
-|-----------|----------|-------------|
-| GlassButton | `button` | Button with glass variants and loading state |
-| GlassCard | `card` | Card with elevation variants and hover-lift |
-| GlassInput | `input` | Text input with focus glow |
-| GlassSwitch | `switch` | Toggle switch with loading and label support |
-| GlassDialog | `dialog` | Modal dialog with overlay blur |
-| GlassDropdown | `dropdown` | Dropdown menu with checkbox/radio/sub-menu |
-| GlassTabs | `tabs` | Tabs with icons, badges, closable, vertical |
-| GlassNavBar | `navbar` | Responsive nav bar with mobile + mega-menu |
-| GlassSidebar | `sidebar` | Collapsible sidebar with nested groups |
-| GlassDataTable | `data-table` | Data table with sort, pagination, selection |
-| GlassChart | `chart` | Charts (Area, Bar, Line, Pie) |
-| GlassCommandPalette | `command` | Cmd+K command palette with fuzzy search |
-| GlassNotificationCenter | `notifications` | Notification center with categories |
-| GlassSegmentedControl | `segmented` | Segmented control with animated indicator |
-| GlassFAB | `fab` | Floating action button with radial actions |
+### Tailwind v4 (CSS-first)
 
-## Prerequisites
+```css
+@import "tailwindcss";
+@import "glassic-ui/styles";
 
-- React 18+
-- Tailwind CSS 3+
-- TypeScript
-
-## Peer Dependencies
-
-These are required and must be installed in your project:
-
-```bash
-npm install react react-dom tailwindcss
+@theme {
+  --color-glass-bg: hsl(var(--glass-bg));
+  --color-glass-border: hsl(var(--glass-border));
+  --color-glass-glow: hsl(var(--glass-glow));
+  --color-glass-shadow: hsl(var(--glass-shadow));
+}
 ```
 
-## Tailwind Configuration
+### Tailwind v3 (JS config)
 
-Add the glass color tokens to your `tailwind.config.ts`:
-
-```ts
-import type { Config } from "tailwindcss";
-
+```js
+// tailwind.config.js
 export default {
   darkMode: ["class"],
-  content: ["./src/**/*.{ts,tsx}"],
+  content: [
+    "./src/**/*.{ts,tsx}",
+    "./node_modules/glassic-ui/dist/**/*.{js,mjs}",
+  ],
   theme: {
     extend: {
       colors: {
@@ -108,8 +86,35 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+};
 ```
+
+## Available Components
+
+| Component | CLI Name | Description |
+|-----------|----------|-------------|
+| GlassButton | `button` | Button with glass variants and loading state |
+| GlassCard | `card` | Card with elevation variants and hover-lift |
+| GlassInput | `input` | Text input with focus glow |
+| GlassSwitch | `switch` | Toggle switch with loading and label support |
+| GlassAlert | `alert` | Alert banner with info/success/warning/error variants |
+| GlassDialog | `dialog` | Modal dialog with overlay blur |
+| GlassDropdown | `dropdown` | Dropdown menu with checkbox/radio/sub-menu |
+| GlassTabs | `tabs` | Tabs with icons, badges, closable, vertical |
+| GlassNavBar | `navbar` | Responsive nav bar with mobile + mega-menu |
+| GlassSidebar | `sidebar` | Collapsible sidebar with nested groups |
+| GlassDataTable | `data-table` | Data table with sort, pagination, selection |
+| GlassChart | `chart` | Charts (Area, Bar, Line, Pie) |
+| GlassCommandPalette | `command` | Cmd+K command palette with fuzzy search |
+| GlassNotificationCenter | `notifications` | Notification center with categories |
+| GlassSegmentedControl | `segmented` | Segmented control with animated indicator |
+| GlassFAB | `fab` | Floating action button with radial actions |
+
+## Requirements
+
+- React 18+
+- Tailwind CSS 3+ or 4+
+- TypeScript (recommended)
 
 ## License
 
