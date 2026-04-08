@@ -99,7 +99,7 @@ npm view glassic-ui`}
         />
         <div className="glass-1 rounded-xl p-4 space-y-2">
           <div className="flex items-center gap-2 text-sm font-medium">
-            <AlertTriangle className="h-4 w-4 text-yellow-500" />
+            <AlertTriangle className="h-4 w-4 text-destructive" />
             <span>Important</span>
           </div>
           <p className="text-sm text-muted-foreground">
