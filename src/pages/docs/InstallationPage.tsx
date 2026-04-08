@@ -392,18 +392,33 @@ export default function App() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Troubleshooting</h2>
         <div className="space-y-3">
-          <div>
-            <p className="font-medium text-foreground">Glass effects not showing?</p>
-            <p className="text-muted-foreground text-sm">Make sure the CSS variables (<code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">--glass-bg</code>, <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">--glass-border</code>, etc.) are defined in your CSS. Run <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">npx glassic-ui init</code> to auto-inject them.</p>
-          </div>
-          <div>
-            <p className="font-medium text-foreground">Using Tailwind v3 instead of v4?</p>
-            <p className="text-muted-foreground text-sm">The glass utility classes use <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">@utility</code> syntax which requires Tailwind v4. If you're on v3, use <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">@layer components</code> instead and add <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">tailwindcss-animate</code> plugin.</p>
-          </div>
-          <div>
-            <p className="font-medium text-foreground">cn() not found?</p>
-            <p className="text-muted-foreground text-sm">Run <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">npx glassic-ui init</code> — it creates <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">src/lib/utils.ts</code> with the cn() helper automatically.</p>
-          </div>
+          {[
+            {
+              q: "Glass effects not showing?",
+              a: 'Make sure you import glassic.css (or paste the glass CSS variables) into your index.css. The --glass-bg, --glass-border, --glass-glow, and --glass-shadow custom properties must be defined. Run "npx glassic-ui init" to auto-generate them, then import: @import "./glassic.css";',
+            },
+            {
+              q: "Using Tailwind v3 instead of v4?",
+              a: 'Glass utility classes use @utility syntax (v4). For v3: use @layer components instead, add tailwindcss-animate plugin, and configure content scanning in tailwind.config.js to include "./node_modules/glassic-ui/dist/**/*.{js,mjs,cjs}".',
+            },
+            {
+              q: 'cn() not found or "@/lib/utils" error?',
+              a: 'CLI components require: (1) src/lib/utils.ts with cn() exported — install clsx + tailwind-merge, (2) Vite alias: resolve.alias @ → src/, (3) tsconfig paths: "@/*" → ["./src/*"]. Run "npx glassic-ui init" to create utils.ts automatically.',
+            },
+            {
+              q: "shadcn/ui required for CLI mode?",
+              a: "You don't need the full shadcn/ui setup — only the cn() utility pattern (clsx + tailwind-merge). However, if you already use shadcn, Glassic components work alongside it since they follow the same conventions.",
+            },
+            {
+              q: "Tailwind v4 — do I need content scanning?",
+              a: "No. Tailwind v4 automatically detects class usage. No content array configuration needed. Just use @theme in CSS for custom tokens.",
+            },
+          ].map((item) => (
+            <div key={item.q} className="glass-1 rounded-xl p-4 space-y-1.5">
+              <p className="text-sm font-medium text-foreground">{item.q}</p>
+              <p className="text-xs text-muted-foreground">{item.a}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
